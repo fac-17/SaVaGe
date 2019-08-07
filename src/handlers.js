@@ -21,7 +21,24 @@ module.exports = {
       }
     });
   },
-  
+
+  postSVG(req, res) {
+    let data = "";
+    req.on("data", chunk => {
+      data += chunk;
+    });
+    req.on("end", () => {
+      console.log(data);
+      let dataObject = JSON.parse(data);
+      postSVGquery(dataObject.name, dataObject.props, (error, result) => {
+        if (error) console.log(error);
+        console.log(result);
+        res.writeHead(200, { "content-type": "text/html" });
+        res.end();
+      });
+    });
+  },
+
   notFound(req, res) {
     res.writeHead(404, { "content-type": "text/html" });
     res.end("404: File not found");

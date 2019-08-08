@@ -35,20 +35,29 @@ const generateSVG=(tag,props)=>{
   return el;
 }
 
+
+const defaultValues={
+  "circle":'"cx":50,"cy":30,"r":10',
+  "rect":'"x":20,"y":50,"width":40,"height":20',
+  "polygon":'"points":"10 10 45 15 20 35"'
+}
+
 backendCall('/getAllData','GET',null,(res)=>{
+  // get just the svgs form the data [ ["picasso","{pros}"],["banksy","{vuewport:232}"]]
   let svgs=Array.from(new Set(res.map(el=>[el.svg_name,el.svg_props])));
+  
   let svgObjects={};
+  
+  // generate all SVGs 
   svgs.forEach(([name,props])=>{
     let svg=generateSVG('svg',JSON.parse(props));  
     svgObjects[name]=svg;
     document.body.appendChild(svg);
   })
   
-  // console.log("SVGS",svgObjects);
-  // console.log(res);
+  // generate all shapes and add to relevant SVG
   res.forEach(el=>{
     let shape=generateSVG(el.type,JSON.parse(el.shape_props));
-    // console.log(shape)
     svgObjects[el.svg_name].appendChild(shape);
   })
     

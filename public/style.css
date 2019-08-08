@@ -7,3 +7,9 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+svg {
+  width:200px;
+  padding: 1rem;
+  border: 1px solid black;
+}

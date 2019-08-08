@@ -13,6 +13,8 @@ const backendCall = (url, method, data, cb) => {
 let SVGbutton = document.querySelector(".SVGbutton");
 
 SVGbutton.addEventListener("click", () => {
+  const SVGname = document.querySelector('.SVGname');
+  const SVGprops = document.querySelector('.SVGprops');
   let name = SVGname.value;
   let props = "{"+SVGprops.value+"}";
   let SVGobject = { name, props };
@@ -38,13 +40,14 @@ SHAPEbutton.addEventListener("click", () => {
 document.querySelector('.btn-combine').addEventListener('click',()=>{
   let svg_id=document.querySelector('.list-of-svgs').value;
   let shape_id=document.querySelector('.list-of-shapes').value;
-  backendCall("/insertSVG_SHAPE","POST",JSON.stringify({svg_id,shape_id}),res=>{
-    console.log("Post method was successful:", res);
-    draw();
-  })
+  let svg_shapeObj = {svg_id, shape_id};
+
+  backendCall("/insertSVG_SHAPE", "POST", JSON.stringify(svg_shapeObj), res=> {
   console.log("COMBINE",svg_id,shape_id);
-  
+  draw();
 })
+})
+
 const generateSVG=(tag,props)=>{
   const el=document.createElementNS("http://www.w3.org/2000/svg", tag);
   Object.entries(props).forEach( ( [key,value] )=>{

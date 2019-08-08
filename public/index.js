@@ -25,3 +25,7 @@ SVGbutton.addEventListener("click", () => {
 backendCall('/getAllData','GET',null,(res)=>{
   console.log(res);
 })
+
+backendCall('/getSVGs','GET',null,(res)=>{
+  console.log(res);
+})

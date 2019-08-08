@@ -11,7 +11,10 @@ const router = (req, res) => {
     handlers.postSVG(req, res);
   }else if (req.url === "/getAllData") {
     handlers.getAllData(req, res);
-  } else {
+  }else if (req.url === "/getSVGs") {
+    handlers.getSVGs(req, res);
+  }
+   else {
     handlers.notFound(req, res);
   }
 };

@@ -21,3 +21,7 @@ SVGbutton.addEventListener("click", () => {
   let SVGobject = { name, props };
   console.log(SVGobject);
 });
+
+backendCall('/getAllData','GET',null,(res)=>{
+  console.log(res);
+})

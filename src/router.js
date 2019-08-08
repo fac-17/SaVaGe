@@ -9,6 +9,10 @@ const router = (req, res) => {
     handlers.staticAssets(req, res);
   } else if (req.url === "/postSVG") {
     handlers.postSVG(req, res);
+  }else if (req.url === "/getAllData") {
+    handlers.getAllData(req, res);
+  }else if (req.url === "/getSVGs") {
+    handlers.getSVGs(req, res);
   } else if (req.url === "/postSHAPE") {
     handlers.postSHAPE(req, res);
   } else {

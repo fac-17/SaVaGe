@@ -39,3 +39,11 @@ SHAPEbutton.addEventListener("click", () => {
     console.log("Post method was successful:", res)
   });
 });
+
+backendCall('/getAllData','GET',null,(res)=>{
+  console.log(res);
+})
+
+backendCall('/getSVGs','GET',null,(res)=>{
+  console.log(res);
+})

@@ -1,5 +1,7 @@
 const fs = require("fs");
 const path = require("path");
+const getAllDataQuery= require('./queries/getAllDataquery');
+const getSVGsQuery= require('./queries/getSVGsquery');
 const postSVGquery = require("./queries/postSVGquery");
 const postSHAPEquery = require("./queries/postSHAPEquery");
 
@@ -38,6 +40,20 @@ module.exports = {
         res.writeHead(200, { "content-type": "text/html" });
         res.end("{}");
       });
+    });
+  },
+  getAllData(req,res){
+    getAllDataQuery((result)=>{
+      console.log(result.rows);
+      res.writeHead(200,{"content-type":"application/json"})
+      res.end(JSON.stringify(result.rows));
+    });
+  },
+  getSVGs(req,res){
+    getSVGsQuery((result)=>{
+      console.log(result.rows);
+      res.writeHead(200,{"content-type":"application/json"})
+      res.end(JSON.stringify(result.rows));
     });
   },
 

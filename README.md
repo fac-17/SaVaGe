@@ -1,6 +1,6 @@
 # SaVaGe
 
-## Installation Guideline
+## Installation Guidelines
 
 After cloning the repo, install dependencies and start the server
 ```bash
@@ -22,7 +22,7 @@ npm run db_init
 ```
 In your browser, open localhost:3000
 
-### Producte
+### Product
 
 SaVaGe Artwork Creator is an app that allows the user to create SVGs using different shapes. Once the SVG is created, the user can copy the code to add to his/her html file. 
 

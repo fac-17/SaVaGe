@@ -19,15 +19,27 @@
 
   <section>
       <input class="SHAPEname" />
+      <select class="SHAPEtype">
+        <option value="circle">circle</option>
+        <option value="rect">rect</option>
+        <option value="polygon">polygon</option>
+
+      </select>
       <input class="SHAPEprops" />
-      <input class="SHAPEtype" />
       <button class="SHAPEbutton">Add an SHAPE</button>
     </section>
 
     <div class="interface-add-shape-to-svg">
+      Add shape: 
+      <select class="list-of-shapes">
+
+        </select>
+        to SVG:
       <select class="list-of-svgs">
 
       </select>
+      
+      <button class="btn-combine">Add</button>
     </div>
     <script src="/public/index.js" async defer></script>
   </body>

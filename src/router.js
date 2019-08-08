@@ -15,6 +15,8 @@ const router = (req, res) => {
     handlers.getSVGs(req, res);
   } else if (req.url === "/postSHAPE") {
     handlers.postSHAPE(req, res);
+  } else if (req.url === "/getSHAPEs") {
+    handlers.getSHAPEs(req, res);
   } else {
     handlers.notFound(req, res);
   }

@@ -21,9 +21,9 @@ SVGbutton.addEventListener("click", () => {
   let SVGobject = { name, props };
   backendCall("/postSVG", "POST", JSON.stringify(SVGobject), res => {
     console.log("Post method was successful:", res);
+    draw();
   });
 });
-
 
 let SHAPEbutton = document.querySelector(".SHAPEbutton");
 let SHAPEname = document.querySelector(".SHAPEname");
@@ -33,17 +33,24 @@ let SHAPEtype = document.querySelector(".SHAPEtype");
 SHAPEbutton.addEventListener("click", () => {
   let name = SHAPEname.value;
   let type = SHAPEtype.value;
-  let props = SHAPEprops.value; 
-  let SHAPEobj = { name, props, type};
+  let props = SHAPEprops.value;
+  let SHAPEobj = { name, props, type };
   backendCall("/postSHAPE", "POST", JSON.stringify(SHAPEobj), res => {
-    console.log("Post method was successful:", res)
+    console.log("Post method was successful:", res);
+    draw();
   });
 });
 
+document.querySelector('.btn-combine').addEventListener('click',()=>{
+  let svg_id=document.querySelector('.list-of-svgs').value;
+  let shape_id=document.querySelector('.list-of-shapes').value;
 
+  console.log("COMBINE",svg_id,shape_id);
+  
+})
 const generateSVG=(tag,props)=>{
   const el=document.createElementNS("http://www.w3.org/2000/svg", tag);
-  Object.entries(props).forEach( ([key,value])=>{
+  Object.entries(props).forEach( ( [key,value] )=>{
     try {
       el.setAttribute(key,value);
     } catch(e){
@@ -65,11 +72,25 @@ const defaultValues={
   "polygon":'"points":"10 10 45 15 20 35"'
 }
 
+// draw all the svgs
 const drawSVGS = (parent) =>{
 
   backendCall('/getAllData','GET',null,(res)=>{
+    
+    //unique list of svg names
+    let svgs=[];
+    console.log(res)
+    res.forEach(el=>{
+      if (!svgs.includes(el.svg_name)){
+        svgs.push(el.svg_name);
+      }
+    });
+    
     // get just the svgs form the data [ ["picasso","{pros}"],["banksy","{vuewport:232}"]]
-    let svgs=Array.from(new Set(res.map(el=>[el.svg_name,el.svg_props])));
+    svgs=svgs.map(svgName=>{
+      return [svgName,res.find(r=>r.svg_name===svgName).svg_props];
+    })
+    console.log(svgs);  
     
     let svgObjects={};
     
@@ -88,21 +109,22 @@ const drawSVGS = (parent) =>{
   })
 }
 
-const populateSVGdropdown=()=>{
-  backendCall('/getSVGs','GET',null,(res)=>{
-    let list=document.querySelector('.list-of-svgs');
+const populateDropdown=(endpoint,selectClass)=>{
+  backendCall(endpoint,'GET',null,(res)=>{
+    let list=document.querySelector(selectClass);
     clearElement(list);
-    res.forEach(svg=>{
+    res.forEach(el=>{
       let option=document.createElement('option');
-      option.value=svg.id;
-      option.textContent=svg.name;
+      option.value=el.id;
+      option.textContent=el.name;
       list.appendChild(option);
     })
   })
   
 }
 const draw=()=>{
-  populateSVGdropdown();
+  populateDropdown('/getSVGs','.list-of-svgs');
+  populateDropdown('/getSHAPEs','.list-of-shapes');
   drawSVGS(document.body);
 }
 

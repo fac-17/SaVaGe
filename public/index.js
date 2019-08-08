@@ -35,6 +35,11 @@ const generateSVG=(tag,props)=>{
   return el;
 }
 
+const clearElement = el => {
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+};
 
 const defaultValues={
   "circle":'"cx":50,"cy":30,"r":10',
@@ -42,28 +47,45 @@ const defaultValues={
   "polygon":'"points":"10 10 45 15 20 35"'
 }
 
-backendCall('/getAllData','GET',null,(res)=>{
-  // get just the svgs form the data [ ["picasso","{pros}"],["banksy","{vuewport:232}"]]
-  let svgs=Array.from(new Set(res.map(el=>[el.svg_name,el.svg_props])));
-  
-  let svgObjects={};
-  
-  // generate all SVGs 
-  svgs.forEach(([name,props])=>{
-    let svg=generateSVG('svg',JSON.parse(props));  
-    svgObjects[name]=svg;
-    document.body.appendChild(svg);
-  })
-  
-  // generate all shapes and add to relevant SVG
-  res.forEach(el=>{
-    let shape=generateSVG(el.type,JSON.parse(el.shape_props));
-    svgObjects[el.svg_name].appendChild(shape);
-  })
+const drawSVGS = (parent) =>{
+
+  backendCall('/getAllData','GET',null,(res)=>{
+    // get just the svgs form the data [ ["picasso","{pros}"],["banksy","{vuewport:232}"]]
+    let svgs=Array.from(new Set(res.map(el=>[el.svg_name,el.svg_props])));
     
+    let svgObjects={};
+    
+    // generate all SVGs 
+    svgs.forEach(([name,props])=>{
+      let svg=generateSVG('svg',JSON.parse(props));  
+      svgObjects[name]=svg;
+      parent.appendChild(svg);
+    })
+    
+    // generate all shapes and add to relevant SVG
+    res.forEach(el=>{
+      let shape=generateSVG(el.type,JSON.parse(el.shape_props));
+      svgObjects[el.svg_name].appendChild(shape);
+    })
+  })
+}
 
-})
+const populateSVGdropdown=()=>{
+  backendCall('/getSVGs','GET',null,(res)=>{
+    let list=document.querySelector('.list-of-svgs');
+    clearElement(list);
+    res.forEach(svg=>{
+      let option=document.createElement('option');
+      option.value=svg.id;
+      option.textContent=svg.name;
+      list.appendChild(option);
+    })
+  })
+  
+}
+const draw=()=>{
+  populateSVGdropdown();
+  drawSVGS(document.body);
+}
 
-backendCall('/getSVGs','GET',null,(res)=>{
-  console.log(res);
-})
+draw();

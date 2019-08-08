@@ -21,3 +21,13 @@ SVGbutton.addEventListener("click", () => {
   let SVGobject = { name, props };
   console.log(SVGobject);
 });
+
+
+const generateSVG=(tag,props)=>{
+  const el=document.createElementNS("http://www.w3.org/2000/svg", tag);
+  Object.entries(props).forEach( ([key,value])=>{
+      el.setAttribute(key,value);
+  });
+  return el;
+}
+

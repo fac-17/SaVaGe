@@ -9,38 +9,42 @@
     <link rel="stylesheet" href="/public/style.css" />
   </head>
   <body>
-    <h1>Create your own SVG!</h1>
+    <h1>Create SVG artwork for your website!</h1>
 
-  <section>
-    <input class="SVGname" />
-    <input class="SVGprops" />
-    <button class="SVGbutton">Add an SVG</button>
-  </section>
+    <section class="svg">
+      <h2>Create a new SVG</h2>
+      <label for="SVGname">SVG name:</label>
+      <input class="SVGname" id="SVGname" />
+      <label for="SVGproperties">SVG properties:</label>
+      <input class="SVGprops" id="SVGproperties" />
+      <button class="SVGbutton">Create SVG</button>
+    </section>
 
-  <section>
-      <input class="SHAPEname" />
-      <select class="SHAPEtype">
+    <section class="shape">
+      <h2>Create a new shape</h2>
+      <label for="shapeName">Shape name:</label>
+      <input class="SHAPEname" id="shapeName" />
+      <label for="shapeType">Shape type:</label>
+      <select class="SHAPEtype" id="shapeType">
         <option value="circle">circle</option>
         <option value="rect">rect</option>
         <option value="polygon">polygon</option>
-
       </select>
-      <input class="SHAPEprops" />
-      <button class="SHAPEbutton">Add an SHAPE</button>
+      <label for="shapeProperties">Shape properties:</label>
+      <input class="SHAPEprops" id="shapeProperties" />
+      <button class="SHAPEbutton">Create shape</button>
     </section>
-
-    <div class="interface-add-shape-to-svg">
-      Add shape: 
-      <select class="list-of-shapes">
-
-        </select>
+    <section class="artwork-creation">
+      <div class="interface-add-shape-to-svg">
+        <h2>Add shapes to your SVG</h2>
+        Add shape:
+        <select class="list-of-shapes"> </select>
         to SVG:
-      <select class="list-of-svgs">
+        <select class="list-of-svgs"> </select>
 
-      </select>
-      
-      <button class="btn-combine">Add</button>
-    </div>
+        <button class="btn-combine">Create artwork</button>
+      </div>
+    </section>
     <section class="svgs-gallery"></section>
     <script src="/public/index.js" async defer></script>
   </body>

@@ -7,9 +7,55 @@ html {
 *:after {
   box-sizing: inherit;
 }
+/*----------------------------LAYOUT/GRID-------------------------*/
+body {
+  padding: 0 10%;
+  display: grid;
+  grid-template-areas:
+    "headline headline"
+    "svgCreation shapeCreation"
+    "artworkCreation artworkCreation"
+    "gallery gallery";
+}
 
+h1 {
+  grid-area: headline;
+}
+
+.svg {
+  grid-area: svgCreation;
+  display: flex;
+  flex-direction: column;
+  padding-right: 2%;
+}
+
+.shape {
+  grid-area: shapeCreation;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2%;
+}
+
+.artwork-creation {
+  grid-area: artworkCreation;
+}
+
+.svgs-gallery {
+  grid-area: gallery;
+}
+
+.SVGbutton,
+.SHAPEbutton {
+  align-self: flex-end;
+  margin: 2% 0;
+}
+
+/*----------------------------LAYOUT/GRID-------------------------*/
+label {
+  margin: 2% 0 0 0;
+}
 svg {
-  width:200px;
+  width: 200px;
   padding: 1rem;
   border: 1px solid black;
 }
@@ -19,7 +65,7 @@ pre {
   white-space: pre-line;
 }
 .svg-wrapper {
-  margin:1rem;
+  margin: 1rem;
 }
 .svgs-gallery {
   display: flex;

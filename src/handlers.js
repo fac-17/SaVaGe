@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const getAllDataQuery= require('./queries/getAllDataquery');
 const getSVGsQuery= require('./queries/getSVGsquery');
+const postSVGquery = require("./queries/postSVGquery");
+const postSHAPEquery = require("./queries/postSHAPEquery");
 
 module.exports = {
   staticAssets(req, res) {
@@ -36,7 +38,7 @@ module.exports = {
         if (error) console.log(error);
         console.log(result);
         res.writeHead(200, { "content-type": "text/html" });
-        res.end();
+        res.end("{}");
       });
     });
   },
@@ -53,6 +55,22 @@ module.exports = {
       res.writeHead(200,{"content-type":"application/json"})
       res.end(JSON.stringify(result.rows));
     });
+  },
+
+  postSHAPE(req, res) {
+    let data2= "";
+    req.on("data", chunk => {
+      data2 += chunk;
+    });
+    req.on("end", () => {
+      console.log(data2);
+      let data2Obj =JSON.parse(data2);
+      postSHAPEquery(data2Obj.name, data2Obj.props, data2Obj.type, (error, result)=> {
+        if (error) console.log(error);
+        res.writeHead(200, {"content-type": "text-html"});
+        res.end("{}");
+      })
+    })
   },
 
   notFound(req, res) {

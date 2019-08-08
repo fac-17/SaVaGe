@@ -13,3 +13,15 @@ svg {
   padding: 1rem;
   border: 1px solid black;
 }
+
+pre {
+  max-width: 200px;
+  white-space: pre-line;
+}
+.svg-wrapper {
+  margin:1rem;
+}
+.svgs-gallery {
+  display: flex;
+  flex-wrap: wrap;
+}

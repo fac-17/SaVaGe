@@ -9,25 +9,25 @@ html {
   box-sizing: inherit;
 }
 /*----------------------------Overall styling-------------------------*/
-h1,
-h2 {
-  font-family: "Nunito", sans-serif;
-}
 
 h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-size: 4em;
+  /* font-weight: 700; */
   text-align: right;
-  margin-top: 7%;
+  margin: 7% 0 4% 0;
+  font-family: "Saira Stencil One", cursive;
+  line-height: 3.5rem;
 }
 
 h2 {
+  font-family: "Oswald", sans-serif;
   margin: 0;
+  font-size: 1.5rem;
 }
 
 button {
   color: black;
-  font-family: "Nunito", sans-serif;
+  font-family: "Oswald", sans-serif;
   background-color: white;
   border: black solid 1px;
   font-size: 1rem;

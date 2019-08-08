@@ -5,6 +5,7 @@ const getSVGsQuery = require("./queries/getSVGsquery");
 const postSVGquery = require("./queries/postSVGquery");
 const postSHAPEquery = require("./queries/postSHAPEquery");
 const getSHAPEsquery = require("./queries/getSHAPEsquery");
+const insertSVG_SHAPEquery= require("./queries/post_SVG_SHAPE");
 
 module.exports = {
   staticAssets(req, res) {
@@ -72,7 +73,7 @@ module.exports = {
         data2Obj.type,
         (error, result) => {
           if (error) console.log(error);
-          res.writeHead(200, { "content-type": "text-html" });
+          res.writeHead(200, { "content-type": "text/html" });
           res.end("{}");
         }
       );
@@ -87,8 +88,26 @@ module.exports = {
     });
   },
 
-  notFound(req, res) {
-    res.writeHead(404, { "content-type": "text/html" });
-    res.end("404: File not found");
-  }
+  insertSVG_SHAPE(req, res) {
+    let data3 = "";
+    req.on("data", chunk => {
+      data3 += chunk; 
+    });
+  req.on("end", () => {
+    let obj = JSON.parse(data3);
+    insertSVG_SHAPEquery(obj.svg_id, obj.shape_id, (error,result) => {
+      if (error) return (error);      
+      res.writeHead(200, { "content-type": "text/html"});
+      res.end("{}");
+    }
+    );
+  });
+},
+
+notFound(req, res) {
+  res.writeHead(404, { "content-type": "text/html"});
+  res.end("404: File not found");
+}
+
 };
+

@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const postSVGquery = require("./query");
+const postSVGquery = require("./queries/postSVGquery");
 
 module.exports = {
   staticAssets(req, res) {
@@ -35,7 +35,7 @@ module.exports = {
         if (error) console.log(error);
         console.log(result);
         res.writeHead(200, { "content-type": "text/html" });
-        res.end();
+        res.end("{}");
       });
     });
   },

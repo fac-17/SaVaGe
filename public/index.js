@@ -26,8 +26,35 @@ SVGbutton.addEventListener("click", () => {
 const generateSVG=(tag,props)=>{
   const el=document.createElementNS("http://www.w3.org/2000/svg", tag);
   Object.entries(props).forEach( ([key,value])=>{
+    try {
       el.setAttribute(key,value);
+    } catch(e){
+      console.log(e);
+    }
   });
   return el;
 }
 
+backendCall('/getAllData','GET',null,(res)=>{
+  let svgs=Array.from(new Set(res.map(el=>[el.svg_name,el.svg_props])));
+  let svgObjects={};
+  svgs.forEach(([name,props])=>{
+    let svg=generateSVG('svg',JSON.parse(props));  
+    svgObjects[name]=svg;
+    document.body.appendChild(svg);
+  })
+  
+  // console.log("SVGS",svgObjects);
+  // console.log(res);
+  res.forEach(el=>{
+    let shape=generateSVG(el.type,JSON.parse(el.shape_props));
+    // console.log(shape)
+    svgObjects[el.svg_name].appendChild(shape);
+  })
+    
+
+})
+
+backendCall('/getSVGs','GET',null,(res)=>{
+  console.log(res);
+})

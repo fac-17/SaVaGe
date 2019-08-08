@@ -10,7 +10,6 @@ const backendCall = (url, method, data, cb) => {
   xml.send(data);
 };
 
-console.log("yolo");
 let SVGbutton = document.querySelector(".SVGbutton");
 let SVGname = document.querySelector(".SVGname");
 let SVGprops = document.querySelector(".SVGprops");
@@ -44,10 +43,14 @@ SHAPEbutton.addEventListener("click", () => {
 document.querySelector('.btn-combine').addEventListener('click',()=>{
   let svg_id=document.querySelector('.list-of-svgs').value;
   let shape_id=document.querySelector('.list-of-shapes').value;
+  let svg_shapeObj = {svg_id, shape_id};
 
+  backendCall("/insertSVG_SHAPE", "POST", JSON.stringify(svg_shapeObj), res=> {
   console.log("COMBINE",svg_id,shape_id);
-  
+  draw();
 })
+})
+
 const generateSVG=(tag,props)=>{
   const el=document.createElementNS("http://www.w3.org/2000/svg", tag);
   Object.entries(props).forEach( ( [key,value] )=>{

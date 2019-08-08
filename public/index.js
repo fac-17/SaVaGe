@@ -23,3 +23,19 @@ SVGbutton.addEventListener("click", () => {
     console.log("Post method was successful:", res);
   });
 });
+
+
+let SHAPEbutton = document.querySelector(".SHAPEbutton");
+let SHAPEname = document.querySelector(".SHAPEname");
+let SHAPEprops = document.querySelector(".SHAPEprops");
+let SHAPEtype = document.querySelector(".SHAPEtype");
+
+SHAPEbutton.addEventListener("click", () => {
+  let name = SHAPEname.value;
+  let type = SHAPEtype.value;
+  let props = SHAPEprops.value; 
+  let SHAPEobj = { name, props, type};
+  backendCall("/postSHAPE", "POST", JSON.stringify(SHAPEobj), res => {
+    console.log("Post method was successful:", res)
+  });
+});

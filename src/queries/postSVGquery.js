@@ -1,4 +1,4 @@
-const dbConnection = require("../database/db_connection");
+const dbConnection = require("../../database/db_connection");
 
 const postSVGquery = (name, props, cb) => {
   dbConnection.query(

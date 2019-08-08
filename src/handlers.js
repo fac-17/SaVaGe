@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const postSVGquery = require("./query");
 
 module.exports = {
   staticAssets(req, res) {

@@ -39,3 +39,14 @@ tape("What is the number of rows in shape table?", t => {
         })
     })
 });
+
+tape("", t => {
+    runDBbuild(function(err, res) {
+        t.error(err, "No error ");
+        let expected= { name:'sq',type:'rect',props:'{"x":20,"y":30,"width":40,"height":40}', id:2};
+        getShapequery(result => {
+            t.deepEqual(result.rows[1], expected);
+            t.end();
+        })
+    })
+});

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -38,7 +38,7 @@
       <label for="shapeName">Shape name:</label>
       <input class="SHAPEname" id="shapeName" />
       <label for="shapeType">Shape type:</label>
-      <select class="SHAPEtype" id="shapeType">
+      <select class="SHAPEtype" id="shapeType" aria-label="shape type">
         <option value="circle">circle</option>
         <option value="rect">rect</option>
         <option value="polygon">polygon</option>
@@ -51,9 +51,9 @@
       <h2>Add shapes to your SVG</h2>
       <div class="interface-add-shape-to-svg">
         Add shape:
-        <select class="list-of-shapes"> </select>
+        <select aria-label="shapes" class="list-of-shapes"> </select>
         to SVG:
-        <select class="list-of-svgs"> </select>
+        <select aria-label="svgs" class="list-of-svgs"> </select>
 
         <button class="btn-combine">Add to artwork</button>
       </div>

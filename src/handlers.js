@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const postSVGquery = require("./queries/postSVGquery");
+const postSHAPEquery = require("./queries/postSHAPEquery");
 
 module.exports = {
   staticAssets(req, res) {
@@ -38,6 +39,22 @@ module.exports = {
         res.end("{}");
       });
     });
+  },
+
+  postSHAPE(req, res) {
+    let data2= "";
+    req.on("data", chunk => {
+      data2 += chunk;
+    });
+    req.on("end", () => {
+      console.log(data2);
+      let data2Obj =JSON.parse(data2);
+      postSHAPEquery(data2Obj.name, data2Obj.props, data2Obj.type, (error, result)=> {
+        if (error) console.log(error);
+        res.writeHead(200, {"content-type": "text-html"});
+        res.end("{}");
+      })
+    })
   },
 
   notFound(req, res) {

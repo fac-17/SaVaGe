@@ -14,3 +14,21 @@ test("Not found route test", t => {
       });
   });
 
+  test("Is the / route link to /public/html", t => {
+    supertest(router)
+      .get("/")
+      .expect(200)
+      .expect("content-type", /html/)
+      .end((err, res) => {
+        fs.readFile(
+          path.join(__dirname, "..", "/public/index.html"),
+          "utf8",
+          (err, content) => {
+            t.equal(res.text, content, "Should have the same content");
+            t.end();
+          }
+        );
+      });
+  });
+
+

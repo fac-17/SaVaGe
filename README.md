@@ -1,26 +1,133 @@
 # SaVaGe
-## Creating a database 
 
-### Project
+## Installation Guideline
 
-This week's project will involve setting up a database which you connect to via a node.js server. You'll use your data to make a dynamic web app for your front-end.
+After cloning the repo, install dependencies and start the server
+```bash
+git clone https://github.com/fac-17/SaVaGe.git
+cd SaVaGe
+npm install
+npm start
+```
 
-### Requirements
+### Configure db
+In the root directory you need the `.env` file with PosgreSQL connection URL in a form
+```
+DATABASE_URL=postgres://very:secret@data
+````
 
-- [ ] Simple web app with a node server and a database.
-- [ ] Your database comes with a schema, which should be documented in your readme (along with any other architectural decisions).
-- [ ] Database hosted on Heroku, or locally.
-- [ ] Build script for your database.
-- [ ] Security concerns appropriately considered (you must protect against script injections!).
-- [ ] Content dynamic, but DOM manipulation kept to a minimum.
-- [ ] Mobile-first design.
-- [ ] Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme).
-- [ ] Test your server routes with supertest.
-- [ ] Test your pure functions both server and client side.
-- [ ] Set up a test database so that you can test your database queries.
+then run db build script to create and populate the tables
+```
+npm run db_init
+```
+In your browser, open localhost:3000
 
-### Getting started
+### Producte
 
-Make sure you have a plan, and break the project down into manageable parts. Here are some things to consider:
+SaVaGe Artwork Creator is an app that allows the user to create SVGs using different shapes. Once the SVG is created, the user can copy the code to add to his/her html file. 
 
-You will need to make the requests and update the DOM in response using client-side JavaScript. As well as serving static HTML and JS files, your server will also need to provide endpoints that return DB query results as JSON. You can query your server from the client using the XMLHttpRequest method. You'll need to be able to make both POSTand GET requests to your server.
+### User Journey 
+To create a SVG artwork, the user can either combine existing SVGs and shapes or create new SVGs and shapes - or a mix of both. 
+
+To create a new SVG, the user needs to provide a name (i.e. "Monet") and can optionally give properties to that svg (i.e. "fill":"green", "stroke":"red"). Once the user clicked "Create SVG", a new svg is added to the database and is available in the dropdown menu below.
+
+To create a new shape, the user needs to provide a name (i.e. "green Circle"), select one of the shape types fron the dropdown menu and give properties to shape (i.e. "cx":50,"cy":30,"r":10). Once the user clicked "Create Shape", a new shape is added to the database and is available in the dropdown menu below.
+
+To create the final artwork, in the 'Add shapes to your SVG' section, the user needs to select a shape and a svg from the respective dropdown menus. The shape is then added to the svg and the svg appears in the gallery below. Multiple shapes can be added to the same svg. 
+
+Once the user is happy with the final SVG, he/she copies the code below the SVG to paste in his/her website code. 
+
+## Goals
+- [x] Decide on idea
+- [x] Draw Schema 
+- [x] Write user journey 
+- [x] Create github repo 
+- [x] Install npm & create gitignore 
+- [x] Deploy on Heroku
+- [x] Set up/Decide on folder structure
+- [x] Set up html boilerplate
+- [x] Set up server side 
+    - [x] Create router.js
+    - [x] Create server.js 
+    - [x] Create handler.js 
+- [x] Set up Database - all
+    - [x] Create connection js 
+    - [x] Create Build Script (SQL file and js file)
+
+- [x] Create queries on server side 
+    - [x] INSERT query for svg table (D)
+    - [x] INSERT query for shape table (E)
+    - [x] INSERT query for svg_shape table (F)
+
+    - [x] SELECT query for svg table (A)
+    - [x] SELECT query for shape table (B)
+    - [x] SELECT query for svg_shape table (C)
+
+- [x] Front end requests 
+    - [x] GET request to get list of svgs (A)
+    - [x] GET request to get list of shapes (B)
+    - [x] GET request to get final artwork ie all data (C)
+    
+    - [x] POST request to add shape to shape table (D)
+    - [x] POST request to add svg to svg table (E)
+    - [x] POST request to add to svg_shape table (F)
+
+- [ ] Tests 
+    - [x] Set up test database
+     - [ ] Test server routers (supertest)
+     - [ ] Tests pure functions
+
+- [x] Update HTML 
+    - [x] Add descriptions to input field
+    - [x] Add default values to all inputs
+    - [x] shape type needs to be a dropdown 
+    - [x] attach names to SVG canvases 
+    
+- [ ] Update CSS 
+    - [x] Create wireframe (discuss with group)
+    - [x] Set up grid or flexbox 
+    - [x] Set up fonts 
+    - [ ] Set up colors 
+
+- [x] Check and improve accessibility
+- [x] Add app to Heroku 
+- [ ] Modularise Code
+- [x] Set up security measurements for database
+- [ ] Write readme 
+
+
+## Stretch Goals
+- [ ] Connect to travis ?
+- [ ] Add option to delete shapes 
+- [ ] Add option to delete SVGs
+- [ ] Edit shapes or SVGS (i.e. data in database)
+- [ ] Add SELECT text to dropdown menus 
+
+## Schema 
+![](https://i.imgur.com/vQgf3pH.jpg)
+
+### svg 
+
+| column | definition |
+| -------- | -------- | 
+| id   | SERIAL PRIMARY KEY     | 
+| props   | VARCHAR(200) NOT NULL     | 
+| name   |   VARCHAR(40) NOT NULL  | 
+
+### shape 
+
+| column | definition |
+|--------|------------|
+| id | SERIAL PRIMARY KEY |
+|   type | VARCHAR(30) NOT NULL |
+|    name | VARCHAR(40) NOT NULL |
+|    props | VARCHAR(200) NOT NULL|
+
+### svg_shape
+| column | definition |
+|--------|------------|
+|id |SERIAL PRIMARY KEY|
+|svg_id |INTEGER NOT NULL REFERENCES svg(id)|
+|shape_id | INTEGER NOT NULL REFERENCES shape(id)|
+
+## Software Architecture

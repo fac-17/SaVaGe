@@ -1,6 +1,7 @@
 const tape = require("tape");
 const runDBbuild = require("../database/db_build");
 const getSvgquery = require("../src/queries/getSVGsquery");
+const getShapequery = require("../src/queries/getSHAPEsquery");
 
 tape("tape is working?", t => {
     t.equals(1, 1, "one is equal to one");
@@ -29,11 +30,12 @@ tape("What is the value of name and props in the first row?", t => {
     })
 });
 
-tape("", t => {
+tape("What is the number of rows in shape table?", t => {
     runDBbuild(function(err, res) {
-        t.error
-
-    }
-    t.expected
-
-})
+        t.error(err, "No error");
+        getShapequery(result => {
+            t.equal(result.rows.length, 5)
+            t.end();
+        })
+    })
+});

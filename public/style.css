@@ -1,11 +1,48 @@
 html {
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+/*----------------------------Overall styling-------------------------*/
+h1,
+h2 {
+  font-family: "Nunito", sans-serif;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 7%;
+}
+
+h2 {
+  margin: 0;
+}
+
+button {
+  color: black;
+  font-family: "Nunito", sans-serif;
+  background-color: white;
+  border: black solid 1px;
+  font-size: 1rem;
+  width: 10rem;
+  padding: 1%;
+  border-radius: 3px;
+}
+
+input,
+select {
+  background-color: white;
+  border: black solid 1px;
+  font-size: 1rem;
+  padding: 1% !important;
+  border-radius: 3px;
 }
 /*----------------------------LAYOUT/GRID-------------------------*/
 body {
@@ -38,6 +75,9 @@ h1 {
 
 .artwork-creation {
   grid-area: artworkCreation;
+  margin-bottom: 5%;
+  background-color: wheat;
+  padding: 2%;
 }
 
 .svgs-gallery {
@@ -49,11 +89,25 @@ h1 {
   align-self: flex-end;
   margin: 2% 0;
 }
-
-/*----------------------------LAYOUT/GRID-------------------------*/
+/*----------------------------Create svg/shape section -------------------------*/
 label {
   margin: 2% 0 0 0;
 }
+
+/*----------------------------Create artwork section -------------------------*/
+
+.interface-add-shape-to-svg {
+  display: flex;
+  margin: 2% 0 0 0;
+}
+.list-of-shapes,
+.list-of-svgs {
+  flex-grow: 1;
+  margin: 0 2% 0 1%;
+}
+
+/*----------------------------gallery section -------------------------*/
+
 svg {
   width: 200px;
   padding: 1rem;

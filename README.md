@@ -1,5 +1,12 @@
 # SaVaGe
 
+SaVaGe Artwork Creator by Bumpy and The Midwives
+
+Colette, Leonie, Francesca, Jan
+
+![](https://i.imgur.com/1Cm41sr.png)
+
+
 ## Installation Guidelines
 
 After cloning the repo, install dependencies and start the server

@@ -40,7 +40,7 @@ tape("What is the number of rows in shape table?", t => {
     })
 });
 
-tape("", t => {
+tape("What are the values of name, props and type in the second row?- shape table", t => {
     runDBbuild(function(err, res) {
         t.error(err, "No error ");
         let expected= { name:'sq',type:'rect',props:'{"x":20,"y":30,"width":40,"height":40}', id:2};

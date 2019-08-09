@@ -34,11 +34,9 @@ module.exports = {
       data += chunk;
     });
     req.on("end", () => {
-      console.log(data);
       let dataObject = JSON.parse(data);
       postSVGquery(dataObject.name, dataObject.props, (error, result) => {
         if (error) console.log(error);
-        console.log(result);
         res.writeHead(200, { "content-type": "text/html" });
         res.end("{}");
       });
@@ -46,14 +44,12 @@ module.exports = {
   },
   getAllData(req, res) {
     getAllDataQuery(result => {
-      console.log(result.rows);
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify(result.rows));
     });
   },
   getSVGs(req, res) {
     getSVGsQuery(result => {
-      console.log(result.rows);
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify(result.rows));
     });
@@ -65,7 +61,6 @@ module.exports = {
       data2 += chunk;
     });
     req.on("end", () => {
-      console.log(data2);
       let data2Obj = JSON.parse(data2);
       postSHAPEquery(
         data2Obj.name,
@@ -82,7 +77,6 @@ module.exports = {
 
   getSHAPEs(req, res) {
     getSHAPEsquery(result => {
-      console.log(result.rows);
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify(result.rows));
     });

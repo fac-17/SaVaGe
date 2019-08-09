@@ -1,11 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-const getAllDataQuery = require("./queries/getAllDataquery");
-const getSVGsQuery = require("./queries/getSVGsquery");
-const postSVGquery = require("./queries/postSVGquery");
-const postSHAPEquery = require("./queries/postSHAPEquery");
-const getSHAPEsquery = require("./queries/getSHAPEsquery");
-const insertSVG_SHAPEquery= require("./queries/post_SVG_SHAPE");
+const queries = require('./queries');
+
 
 module.exports = {
   staticAssets(req, res) {
@@ -34,26 +30,22 @@ module.exports = {
       data += chunk;
     });
     req.on("end", () => {
-      console.log(data);
       let dataObject = JSON.parse(data);
-      postSVGquery(dataObject.name, dataObject.props, (error, result) => {
+      queries.postSVGquery(dataObject.name, dataObject.props, (error, result) => {
         if (error) console.log(error);
-        console.log(result);
         res.writeHead(200, { "content-type": "text/html" });
         res.end("{}");
       });
     });
   },
   getAllData(req, res) {
-    getAllDataQuery(result => {
-      console.log(result.rows);
+    queries.getAllDataQuery(result => {
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify(result.rows));
     });
   },
   getSVGs(req, res) {
-    getSVGsQuery(result => {
-      console.log(result.rows);
+    queries.getSVGsQuery(result => {
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify(result.rows));
     });
@@ -65,9 +57,8 @@ module.exports = {
       data2 += chunk;
     });
     req.on("end", () => {
-      console.log(data2);
       let data2Obj = JSON.parse(data2);
-      postSHAPEquery(
+      queries.postSHAPEquery(
         data2Obj.name,
         data2Obj.props,
         data2Obj.type,
@@ -81,8 +72,7 @@ module.exports = {
   },
 
   getSHAPEs(req, res) {
-    getSHAPEsquery(result => {
-      console.log(result.rows);
+    queries.getSHAPEsquery(result => {
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify(result.rows));
     });
@@ -95,7 +85,7 @@ module.exports = {
     });
   req.on("end", () => {
     let obj = JSON.parse(data3);
-    insertSVG_SHAPEquery(obj.svg_id, obj.shape_id, (error,result) => {
+    queries.insertSVG_SHAPEquery(obj.svg_id, obj.shape_id, (error,result) => {
       if (error) return (error);      
       res.writeHead(200, { "content-type": "text/html"});
       res.end("{}");

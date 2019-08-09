@@ -34,6 +34,12 @@ button {
   width: 10rem;
   padding: 1%;
   border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  color:white;
+  background-color: black;
 }
 
 input,
@@ -43,6 +49,8 @@ select {
   font-size: 1rem;
   padding: 1% !important;
   border-radius: 3px;
+  cursor: pointer;
+
 }
 /*----------------------------LAYOUT/GRID-------------------------*/
 body {
@@ -102,6 +110,7 @@ label {
 .interface-add-shape-to-svg {
   display: flex;
   margin-top: 2%;
+  align-items: center;
 }
 .list-of-shapes,
 .list-of-svgs {

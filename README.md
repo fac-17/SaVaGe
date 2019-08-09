@@ -29,6 +29,14 @@ npm run db_init
 ```
 In your browser, open localhost:3000
 
+### Testing
+
+To do tests, you need another db setup with variable `TEST_DB_URL` set to  testing db url in `.env`
+Then to run all tests (including db and server):
+```
+npm test
+```
+
 ### Product
 
 SaVaGe Artwork Creator is an app that allows the user to create SVGs using different shapes. Once the SVG is created, the user can copy the code to add to his/her html file. 
@@ -81,7 +89,7 @@ Once the user is happy with the final SVG, he/she copies the code below the SVG 
 
 - [ ] Tests 
     - [x] Set up test database
-     - [ ] Test server routers (supertest)
+     - [x] Test server routers (supertest)
      - [ ] Tests pure functions
 
 - [x] Update HTML 
@@ -90,17 +98,17 @@ Once the user is happy with the final SVG, he/she copies the code below the SVG 
     - [x] shape type needs to be a dropdown 
     - [x] attach names to SVG canvases 
     
-- [ ] Update CSS 
+- [x] Update CSS 
     - [x] Create wireframe (discuss with group)
     - [x] Set up grid or flexbox 
     - [x] Set up fonts 
-    - [ ] Set up colors 
+    - [x] Set up colors 
 
 - [x] Check and improve accessibility
 - [x] Add app to Heroku 
 - [ ] Modularise Code
 - [x] Set up security measurements for database
-- [ ] Write readme 
+- [x] Write readme 
 
 
 ## Stretch Goals
@@ -137,4 +145,10 @@ Once the user is happy with the final SVG, he/she copies the code below the SVG 
 |svg_id |INTEGER NOT NULL REFERENCES svg(id)|
 |shape_id | INTEGER NOT NULL REFERENCES shape(id)|
 
-## Software Architecture
+## Learning outcomes 
+- Default gitignore  created by Github 
+- Repeat last argument in Command line: ESC .
+- SVG structure
+- INSERT with parameters to increase security
+
+

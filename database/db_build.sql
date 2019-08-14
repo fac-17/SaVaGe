@@ -1,8 +1,15 @@
 BEGIN;
 
+DROP TABLE IF EXISTS login_details CASCADE;
 DROP TABLE IF EXISTS svg CASCADE;
 DROP TABLE IF EXISTS shape CASCADE;
 DROP TABLE IF EXISTS svg_shape CASCADE;
+
+CREATE TABLE login_details (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(50) NOT NULL
+);
 
 CREATE TABLE svg (
     id SERIAL PRIMARY KEY,
@@ -25,12 +32,18 @@ CREATE TABLE svg_shape (
     FOREIGN KEY (shape_id) REFERENCES shape(id)
 );
 
-INSERT INTO svg(name,props) VALUES 
+INSERT INTO login_details(username,password) VALUES
+  ("Leonie", "bump"),
+  ("Jan", "poo666"),
+  ("Francesca", "ciao"),
+  ("Colette", "butts");
+
+INSERT INTO svg(name,props) VALUES
   ('picasso','{"fill":"pink"}'),
   ('rembrandt','{"stroke":"red"}'),
   ('banksy','{"viewPort":"0 0 72 72"}');
 
-INSERT INTO shape(name,type,props) VALUES 
+INSERT INTO shape(name,type,props) VALUES
 ('circle1','circle','{"cy":23,"cx":34,"r":10}'),
 ('sq','rect','{"x":20,"y":30,"width":40,"height":40}'),
 ('triangle','polygon','{"points":"60 60 30 30 10 50"}'),

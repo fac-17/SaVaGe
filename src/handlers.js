@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const queries = require("./queries");
+const querystring = require("querystring");
 
 module.exports = {
   staticAssets(req, res) {
@@ -30,7 +31,8 @@ module.exports = {
     });
     req.on("end", () => {
       console.log(data);
-      let dataObject = JSON.parse(data);
+      let dataObject = querystring.parse(data);
+      console.log(dataObject);
     });
   },
 

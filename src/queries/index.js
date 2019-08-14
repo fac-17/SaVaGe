@@ -4,5 +4,6 @@ module.exports = {
   postSVGquery: require("./postSVGquery"),
   postSHAPEquery: require("./postSHAPEquery"),
   getSHAPEsquery: require("./getSHAPEsquery"),
-  insertSVG_SHAPEquery: require("./post_SVG_SHAPE")
+  insertSVG_SHAPEquery: require("./post_SVG_SHAPE"),
+  getUserQuery: require("./getUserQuery")
 };

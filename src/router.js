@@ -17,7 +17,9 @@ const router = (req, res) => {
   } else if (req.url === "/getSHAPEs") {
     handlers.getSHAPEs(req, res);
   } else if (req.url === "/insertSVG_SHAPE") {
-    handlers.insertSVG_SHAPE(req, res)
+    handlers.insertSVG_SHAPE(req, res);
+  } else if (req.url === "/login") {
+    handlers.login(req, res);
   } else {
     handlers.notFound(req, res);
   }

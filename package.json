@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "db_init": "node database/db_init.js",
-    "test": "NODE_ENV=test tape tests/*.js | tap-spec" 
+    "test": "NODE_ENV=test tape tests/*.js | tap-spec"
   },
   "repository": {
     "type": "git",

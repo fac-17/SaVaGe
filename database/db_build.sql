@@ -32,11 +32,11 @@ CREATE TABLE svg_shape (
     FOREIGN KEY (shape_id) REFERENCES shape(id)
 );
 
-INSERT INTO login_details(username,password) VALUES
-  ("Leonie", "bump"),
-  ("Jan", "poo666"),
-  ("Francesca", "ciao"),
-  ("Colette", "butts");
+INSERT INTO login_details(username, password) VALUES
+  ('Leonie', 'bump'),
+  ('Jan', 'poo666'),
+  ('Francesca', 'ciao'),
+  ('Colette', 'butts');
 
 INSERT INTO svg(name,props) VALUES
   ('picasso','{"fill":"pink"}'),

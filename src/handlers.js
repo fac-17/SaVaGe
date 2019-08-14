@@ -30,11 +30,17 @@ module.exports = {
       data += chunk;
     });
     req.on("end", () => {
-      console.log(data);
       let dataObject = querystring.parse(data);
-      console.log(dataObject);
+      queries.getUserQuery(dataObject.username, dataObject.password, (err, res)=> {
+        if (res.rows)
+    
+        console.log(res.rows[0]);
+      }
+      )
     });
   },
+
+
 
   postSVG(req, res) {
     let data = "";

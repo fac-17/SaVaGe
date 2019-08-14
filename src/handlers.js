@@ -32,6 +32,7 @@ module.exports = {
     req.on("end", () => {
       let dataObject = querystring.parse(data);
       queries.getUserQuery(dataObject.username, dataObject.password, (err, res)=> {
+        if (res.rows)
     
         console.log(res.rows[0]);
       }

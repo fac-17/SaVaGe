@@ -31,9 +31,9 @@ module.exports = {
     });
     req.on("end", () => {
       let dataObject = querystring.parse(data);
-      queries.getUserQuery( (err, res)=> {
-        console.log('hihi', res);
-        console.log('i am an error', err);
+      queries.getUserQuery(dataObject.username, dataObject.password, (err, res)=> {
+    
+        console.log(res.rows[0]);
       }
       )
     });

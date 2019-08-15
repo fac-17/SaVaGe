@@ -15,6 +15,8 @@ npm install
 npm start
 ```
 
+Create a .env file in the root directory and ask our team to provide you with the content for this file. 
+
 ### Configure db
 In the root directory you need the `.env` file with PosgreSQL connection URL in a form
 ```
@@ -109,5 +111,6 @@ All artwork (created by any user) is visible in the gallery. The gallery is alwa
 - Repeat last argument in Command line: ESC .
 - SVG structure
 - INSERT with parameters to increase security
+- Cookies
 
 

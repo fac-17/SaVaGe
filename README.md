@@ -2,9 +2,7 @@
 
 SaVaGe Artwork Creator by Bumpy and The Midwives
 
-Colette, Leonie, Francesca, Jan
-
-![](https://i.imgur.com/1Cm41sr.png)
+Colette, Leonie, Francesca, Jan, Sam
 
 
 ## Installation Guidelines
@@ -42,6 +40,9 @@ npm test
 SaVaGe Artwork Creator is an app that allows the user to create SVGs using different shapes. Once the SVG is created, the user can copy the code to add to his/her html file. 
 
 ### User Journey 
+1.) User logs in with username & password
+2.) Once logged in, user can create SVGs and create shapes
+3.) To create the artwork, the user can select 
 To create a SVG artwork, the user can either combine existing SVGs and shapes or create new SVGs and shapes - or a mix of both. 
 
 To create a new SVG, the user needs to provide a name (i.e. "Monet") and can optionally give properties to that svg (i.e. "fill":"green", "stroke":"red"). Once the user clicked "Create SVG", a new svg is added to the database and is available in the dropdown menu below.

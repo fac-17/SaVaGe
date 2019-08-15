@@ -86,8 +86,9 @@ module.exports = {
       res.end(JSON.stringify(result.rows));
     });
   },
-  getSVGs(req, res) {
-    queries.getSVGsQuery(result => {
+
+  getSVGs(req, res, userId) {
+    queries.getSVGsQuery(userId, (result) => {
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify(result.rows));
     });

@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const queries = require("./queries");
 const querystring = require("querystring");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   staticAssets(req, res) {
@@ -31,10 +32,17 @@ module.exports = {
     });
     req.on("end", () => {
       let dataObject = querystring.parse(data);
-      queries.getUserQuery(dataObject.username, dataObject.password, (err, res)=> {
-        if (res.rows)
-    
-        console.log(res.rows[0]);
+      queries.getUserQuery(dataObject.username, dataObject.password, (err, result)=> {
+        const user = result.rows[0];
+        if (user) {
+          const jwtToken = jwt.sign(user, "secret");
+          res.writeHead(301, {'location': '/', 'Set-Cookie': 'token='+jwtToken});
+          res.end();
+          console.log(jwtToken);
+        } else {
+          res.writeHead(301, {'location': '/'});
+          res.end();
+        }
       }
       )
     });

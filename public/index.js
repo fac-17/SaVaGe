@@ -96,21 +96,25 @@ const drawSVGS = () => {
 
     // get just the svgs form the data [ ["picasso","{pros}"],["banksy","{vuewport:232}"]]
     svgs = svgs.map(svgName => {
-      return [svgName, res.find(r => r.svg_name === svgName).svg_props];
+      const svgObj=res.find(r => r.svg_name === svgName)
+      return [svgName, svgObj.svg_props, svgObj.username];
     });
 
     const svgObjects = {};
     // generate all SVGs
-    svgs.forEach(([name, props]) => {
+    svgs.forEach(([name, props, username]) => {
       const svg = generateSVG("svg", JSON.parse(props));
       svgObjects[name] = svg;
       const wrapper = document.createElement("div");
       wrapper.classList.add("svg-wrapper");
       const title = document.createElement("h3");
       title.textContent = name;
+      const author = document.createElement('h4');
+      author.textContent = username
       const code = document.createElement("pre");
       code.classList.add("svg-code");
       wrapper.appendChild(title);
+      wrapper.appendChild(author);
       wrapper.appendChild(svg);
       wrapper.appendChild(code);
       parent.appendChild(wrapper);

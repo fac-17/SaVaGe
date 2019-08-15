@@ -7,14 +7,14 @@ DROP TABLE IF EXISTS svg_shape CASCADE;
 
 CREATE TABLE login_details (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE svg (
     id SERIAL PRIMARY KEY,
     props VARCHAR(200) NOT NULL,
-    name VARCHAR(40) NOT NULL,
+    name VARCHAR(40) NOT NULL UNIQUE,
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES login_details(id)
 );
@@ -22,7 +22,7 @@ CREATE TABLE svg (
 CREATE TABLE shape (
     id SERIAL PRIMARY KEY,
     type VARCHAR(30) NOT NULL,
-    name VARCHAR(40) NOT NULL,
+    name VARCHAR(40) NOT NULL UNIQUE,
     props VARCHAR(200) NOT NULL
 );
 -- click add to artwork

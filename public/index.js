@@ -10,17 +10,22 @@ const backendCall = (url, method, data, cb) => {
   xml.send(data);
 };
 
+const isLoggedIn =  document.querySelector('section.logout')? true: false;
+
 const SVGbutton = document.querySelector(".SVGbutton");
 const SVGname = document.querySelector(".SVGname");
 const SVGprops = document.querySelector(".SVGprops");
 
-if (SVGbutton){
+if (isLoggedIn){
 
   SVGbutton.addEventListener("click", () => {
     const name = SVGname.value;
     const props = "{" + SVGprops.value + "}";
     const SVGobject = { name, props };
     backendCall("/postSVG", "POST", JSON.stringify(SVGobject), res => {
+      if (res.error){
+        alert("SVG name has to be a unique.");
+      }
       draw();
       SVGname.value = "";
       SVGprops.value = "";
@@ -33,7 +38,7 @@ const SHAPEname = document.querySelector(".SHAPEname");
 const SHAPEprops = document.querySelector(".SHAPEprops");
 const SHAPEtype = document.querySelector(".SHAPEtype");
 
-if (SHAPEbutton){
+if (isLoggedIn){
 
   SHAPEbutton.addEventListener("click", () => {
     const name = SHAPEname.value;
@@ -41,6 +46,9 @@ if (SHAPEbutton){
     const props = "{" + SHAPEprops.value + "}";
     const SHAPEobj = { name, props, type };
     backendCall("/postSHAPE", "POST", JSON.stringify(SHAPEobj), res => {
+      if (res.error){
+        alert("Shape name has to be a unique.");
+      }
       draw();
       SHAPEname.value = "";
     });
@@ -159,7 +167,7 @@ const SHAPEt=document
   }
     
 const draw = () => {
-  if (SHAPEbutton){
+  if (isLoggedIn){
     populateDropdown("/getSVGs", ".list-of-svgs");
     populateDropdown("/getSHAPEs", ".list-of-shapes");
     populateDefaultValue();

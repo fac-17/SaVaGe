@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const queries = require("./queries");
 const querystring = require("querystring");
-const jwt = require("jwt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   staticAssets(req, res) {

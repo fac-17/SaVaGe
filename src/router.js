@@ -22,7 +22,7 @@ const router = (req, res) => {
     } else if (req.url === "/getSHAPEs") {
       handlers.getSHAPEs(req, res);
     } else if (req.url === "/insertSVG_SHAPE") {
-      handlers.insertSVG_SHAPE(req, res);
+      handlers.insertSVG_SHAPE(req, res, logged_In.id);
     } else if (req.url === "/logout") {
       handlers.logout(req, res);
     } else {

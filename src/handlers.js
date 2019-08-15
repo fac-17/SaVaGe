@@ -38,7 +38,7 @@ module.exports = {
         (err, result) => {
           const user = result.rows[0];
           if (user) {
-            const jwtToken = jwt.sign(user, "secret");
+            const jwtToken = jwt.sign(user, process.env.SECRET);
             res.writeHead(301, {
               location: "/",
               "Set-Cookie": "token=" + jwtToken

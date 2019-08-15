@@ -20,6 +20,7 @@ header {
   display: flex;
   justify-content: flex-end;
 }
+
 .loginForm {
   display: flex;
   justify-content: space-around;
@@ -28,6 +29,16 @@ header {
 .loginForm > * {
   margin: 0 1%;
   align-self: center;
+}
+
+.loginSubmit {
+  padding: 5px;
+  width: 300px;
+  flex-basis: 300px;
+}
+
+.loginSubmit:hover {
+  border-color: white;
 }
 
 /*----------------------------gallery section -------------------------*/
@@ -53,37 +64,16 @@ pre {
 /*----------------------------mobile view -------------------------*/
 
 @media screen and (max-width: 768px) {
-  body {
+  main {
     padding: 0 2%;
     display: grid;
     grid-template-areas:
       "headline"
-      "svgCreation"
-      "shapeCreation"
-      "artworkCreation"
       "gallery";
   }
 
   h1 {
     grid-area: headline;
-  }
-
-  .svg {
-    grid-area: svgCreation;
-    display: flex;
-    flex-direction: column;
-    padding-right: 2%;
-  }
-
-  .shape {
-    grid-area: shapeCreation;
-    display: flex;
-    flex-direction: column;
-    padding-left: 2%;
-  }
-
-  .artwork-creation {
-    grid-area: artworkCreation;
   }
 
   .svgs-gallery {
@@ -94,5 +84,10 @@ pre {
   .SHAPEbutton {
     align-self: flex-end;
     margin: 2% 0;
+  }
+
+  .loginSubmit {
+    width: 10px;
+    padding: 5px;
   }
 }

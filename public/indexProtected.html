@@ -6,6 +6,7 @@
     <title>SaVaGe</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/public/style.css" />
     <link rel="stylesheet" href="/public/styleProtected.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap"
@@ -22,50 +23,57 @@
     />
   </head>
   <body>
-    <section class="logout">
-      <span>{{ username }}</span>
+    <header>
+      <p>
+        Welcome, <span>{{ username }}</span
+        >!
+      </p>
       <form action="/logout" method="POST">
         <button type="submit" class="logoutSubmit">Logout</button>
       </form>
-    </section>
+    </header>
+    <main>
+      <h1>SaVaGe<br />ARTWORK<br />CREATOR</h1>
 
-    <h1>SaVaGe<br />ARTWORK<br />CREATOR</h1>
+      <section class="svg">
+        <h2>Create a new SVG</h2>
+        <label for="SVGname">SVG name (any unique name):</label>
+        <input class="SVGname" id="SVGname" />
+        <label for="SVGproperties">SVG properties (optional):</label>
+        <input class="SVGprops" id="SVGproperties" />
+        <button class="SVGbutton">Create SVG</button>
+      </section>
 
-    <section class="svg">
-      <h2>Create a new SVG</h2>
-      <label for="SVGname">SVG name (any unique name):</label>
-      <input class="SVGname" id="SVGname" />
-      <label for="SVGproperties">SVG properties (optional):</label>
-      <input class="SVGprops" id="SVGproperties" />
-      <button class="SVGbutton">Create SVG</button>
-    </section>
+      <section class="shape">
+        <h2>Create a new shape</h2>
+        <label for="shapeName">Shape name (any unique name):</label>
+        <input class="SHAPEname" id="shapeName" />
+        <label for="shapeType">Shape type:</label>
+        <select class="SHAPEtype" id="shapeType" aria-label="shape type">
+          <option value="circle">circle</option>
+          <option value="rect">rect</option>
+          <option value="polygon">polygon</option>
+        </select>
+        <label for="shapeProperties"
+          >Shape properties (depending on type):</label
+        >
+        <input class="SHAPEprops" id="shapeProperties" />
+        <button class="SHAPEbutton">Create shape</button>
+      </section>
+      <section class="artwork-creation">
+        <h2>Add shapes to your SVG</h2>
+        <div class="interface-add-shape-to-svg">
+          Add shape:
+          <select aria-label="shapes" class="list-of-shapes"> </select>
+          to SVG:
+          <select aria-label="svgs" class="list-of-svgs"> </select>
 
-    <section class="shape">
-      <h2>Create a new shape</h2>
-      <label for="shapeName">Shape name (any unique name):</label>
-      <input class="SHAPEname" id="shapeName" />
-      <label for="shapeType">Shape type:</label>
-      <select class="SHAPEtype" id="shapeType" aria-label="shape type">
-        <option value="circle">circle</option>
-        <option value="rect">rect</option>
-        <option value="polygon">polygon</option>
-      </select>
-      <label for="shapeProperties">Shape properties (depending on type):</label>
-      <input class="SHAPEprops" id="shapeProperties" />
-      <button class="SHAPEbutton">Create shape</button>
-    </section>
-    <section class="artwork-creation">
-      <h2>Add shapes to your SVG</h2>
-      <div class="interface-add-shape-to-svg">
-        Add shape:
-        <select aria-label="shapes" class="list-of-shapes"> </select>
-        to SVG:
-        <select aria-label="svgs" class="list-of-svgs"> </select>
+          <button class="btn-combine">Add to artwork</button>
+        </div>
+      </section>
+      <section class="svgs-gallery"></section>
+    </main>
 
-        <button class="btn-combine">Add to artwork</button>
-      </div>
-    </section>
-    <section class="svgs-gallery"></section>
     <script src="/public/index.js" async defer></script>
   </body>
 </html>

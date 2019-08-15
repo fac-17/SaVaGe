@@ -7,6 +7,8 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 /*----------------------------Overall styling-------------------------*/
@@ -14,7 +16,8 @@ html {
 header {
   background: black;
   color: white;
-  padding: 1%;
+  height: 7vh;
+  padding: 2%;
 }
 
 main {
@@ -23,7 +26,6 @@ main {
 
 h1 {
   font-size: 4em;
-  /* font-weight: 700; */
   text-align: right;
   margin: 7% 0 4% 0;
   font-family: "Saira Stencil One", cursive;
@@ -42,7 +44,7 @@ button {
   background-color: white;
   border: black solid 1px;
   font-size: 1rem;
-  width: 10rem;
+  width: 20vw;
   padding: 1%;
   border-radius: 3px;
   cursor: pointer;

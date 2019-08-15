@@ -1,8 +1,10 @@
 const handlers = require("./handlers");
+const log = require("./loggedIn");
 
 const router = (req, res) => {
   if (req.url === "/") {
     req.url = "/public/index.html";
+    const logged_In = log(req);
   }
   if (req.url.startsWith("/public")) {
     handlers.staticAssets(req, res);

@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS svg_shape CASCADE;
 CREATE TABLE login_details (
   id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
-  password VARCHAR(50) NOT NULL
+  password VARCHAR(250) NOT NULL
 );
 
 CREATE TABLE svg (
@@ -37,7 +37,7 @@ CREATE TABLE svg_shape (
 INSERT INTO login_details(username, password) VALUES
   ('Leonie', '$2b$10$v.gO.1AOPD05n.N0ExnQ8.jRSpCQgiBhtMnJf/ooVps6YEG7tsek6'),
   ('Jan', '$2b$10$OoqihByGLhtU78aQxKDMfealOB11jw2oVUB7UpcHoes4fzmEIGSoC'),
-  ('Francesca', '$2b$10$z0.4djXp91VHX2Yuby5ksO1API3pDx1ZDcMk9r5nAoURxVFKRGx7O'),
+  ('Francesca', '$2b$10$53jDqmY1lhO2JEiUem6pb.HJ6yc7drE8U7mR1KKYT8Cq/qKUz3fD.'),
   ('Colette', '$2b$10$vtHFXu4vWmUmS6.zd2XYg.sWrFwLD1ukmYcWDo5iSK34Ybt.5m.va'),
   ('Sam', '$2b$10$xPOGe5VnffI1AK3.K2OVu.IYCNK0rXv3YAkjKf1oQIfiOmoapwnxe');
 

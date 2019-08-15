@@ -5,6 +5,8 @@ const querystring = require("querystring");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
+const secret = process.env.SECRET;
+
 module.exports = {
   staticAssets(req, res, username) {
     const extension = path.extname(req.url).substring(1);
@@ -33,14 +35,14 @@ module.exports = {
     });
     req.on("end", () => {
       let dataObject = querystring.parse(data);
-      bcrypt.hash(dataObject.password, 10, function(err, hash) {
+      bcrypt.hash(dataObject.password, process.env.SALT, function(err, hash) {
+        console.log('password hash = ', hash)
         queries.getUserQuery(
           dataObject.username,
           hash,
-          (err, result) => {
-            const user = result.rows[0];
+          (err, user) => {
             if (user) {
-              const jwtToken = jwt.sign(user, "secret");
+              const jwtToken = jwt.sign(user, secret);
               res.writeHead(301, {
                 location: "/",
                 "Set-Cookie": "token=" + jwtToken

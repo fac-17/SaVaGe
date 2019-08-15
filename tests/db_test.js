@@ -12,10 +12,9 @@ tape("tape is working?", t => {
 tape("What is the number of rows in svg table?", t => {
     runDBbuild(function(err, res) {
         t.error(err, "No error");
-        queries.getSVGsQuery(result => {
-            t.equal(result.rows.length, 3);
+        queries.getSVGsQuery(1,result => {
+            t.equal(result.rows.length, 1);
             t.end();
-            
         })
     })
 });
@@ -23,15 +22,15 @@ tape("What is the number of rows in svg table?", t => {
 tape("What is the value of name and props in the first row?", t => {
     runDBbuild(function(err, res) {
         t.error(err, "No error ");
-        let expected= {name:'picasso',props:'{"fill":"pink"}',id:1};
-        queries.getSVGsQuery(result => {
+        let expected= {name:'picasso',props:'{"fill":"pink"}',user_id:1,id:1};
+        queries.getSVGsQuery(1,result => {
             t.deepEqual(result.rows[0], expected);
             t.end();
         })
     })
 });
 
-tape("What is the number of rows in shape table?", t => {
+tape("Can you log in Jan?", t => {
     runDBbuild(function(err, res) {
         t.error(err, "No error");
         queries.getSHAPEsquery(result => {
@@ -47,6 +46,16 @@ tape("What are the values of name, props and type in the second row?- shape tabl
         let expected= { name:'sq',type:'rect',props:'{"x":20,"y":30,"width":40,"height":40}', id:2};
         queries.getSHAPEsquery(result => {
             t.deepEqual(result.rows[1], expected);
+            t.end();
+        })
+    })
+});
+
+tape("What are the values of name, props and type in the second row?- shape table", t => {
+    runDBbuild(function(err, res) {
+        t.error(err, "No error ");
+        queries.getUserQuery("Jan",'poo666',(err,result) => {
+            t.equal(result.rows.length, 1);
             t.end();
         })
     })

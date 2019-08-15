@@ -32,23 +32,35 @@ module.exports = {
     });
     req.on("end", () => {
       let dataObject = querystring.parse(data);
-      queries.getUserQuery(dataObject.username, dataObject.password, (err, result)=> {
-        const user = result.rows[0];
-        if (user) {
-          const jwtToken = jwt.sign(user, "secret");
-          res.writeHead(301, {'location': '/', 'Set-Cookie': 'token='+jwtToken});
-          res.end();
-          console.log(jwtToken);
-        } else {
-          res.writeHead(301, {'location': '/'});
-          res.end();
+      queries.getUserQuery(
+        dataObject.username,
+        dataObject.password,
+        (err, result) => {
+          const user = result.rows[0];
+          if (user) {
+            const jwtToken = jwt.sign(user, "secret");
+            res.writeHead(301, {
+              location: "/",
+              "Set-Cookie": "token=" + jwtToken
+            });
+            res.end();
+            console.log(jwtToken);
+          } else {
+            res.writeHead(301, { location: "/" });
+            res.end();
+          }
         }
-      }
-      )
+      );
     });
   },
 
-
+  logout(req, res) {
+    res.writeHead(301, {
+      location: "/",
+      "Set-Cookie": "token=false; Max-Age=0"
+    });
+    res.end();
+  },
 
   postSVG(req, res) {
     let data = "";

@@ -35,11 +35,12 @@ CREATE TABLE svg_shape (
 );
 -- //login table 
 INSERT INTO login_details(username, password) VALUES
-  ('Leonie', 'bump'),
-  ('Jan', 'poo666'),
-  ('Francesca', 'ciao'),
-  ('Colette', 'butts'),
-  ('Sam', 'jam');
+  ('Leonie', '$2b$10$v.gO.1AOPD05n.N0ExnQ8.jRSpCQgiBhtMnJf/ooVps6YEG7tsek6'),
+  ('Jan', '$2b$10$OoqihByGLhtU78aQxKDMfealOB11jw2oVUB7UpcHoes4fzmEIGSoC'),
+  ('Francesca', '$2b$10$z0.4djXp91VHX2Yuby5ksO1API3pDx1ZDcMk9r5nAoURxVFKRGx7O'),
+  ('Colette', '$2b$10$vtHFXu4vWmUmS6.zd2XYg.sWrFwLD1ukmYcWDo5iSK34Ybt.5m.va'),
+  ('Sam', '$2b$10$xPOGe5VnffI1AK3.K2OVu.IYCNK0rXv3YAkjKf1oQIfiOmoapwnxe');
+
 
 INSERT INTO svg(name,props,user_id) VALUES
   ('picasso','{"fill":"pink"}',1),

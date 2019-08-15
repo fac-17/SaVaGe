@@ -26,6 +26,7 @@
     "tape": "^4.11.0"
   },
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "cookie": "^0.4.0",
     "env2": "^2.2.2",
     "jsonwebtoken": "^8.5.1",

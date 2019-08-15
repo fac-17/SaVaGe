@@ -3,6 +3,7 @@ const path = require("path");
 const queries = require("./queries");
 const querystring = require("querystring");
 const jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
 
 module.exports = {
   staticAssets(req, res, username) {
@@ -32,25 +33,28 @@ module.exports = {
     });
     req.on("end", () => {
       let dataObject = querystring.parse(data);
-      queries.getUserQuery(
-        dataObject.username,
-        dataObject.password,
-        (err, result) => {
-          const user = result.rows[0];
-          if (user) {
-            const jwtToken = jwt.sign(user, "secret");
-            res.writeHead(301, {
-              location: "/",
-              "Set-Cookie": "token=" + jwtToken
-            });
-            res.end();
-            console.log(jwtToken);
-          } else {
-            res.writeHead(301, { location: "/" });
-            res.end();
+      bcrypt.hash(dataObject.password, 10, function(err, hash) {
+        queries.getUserQuery(
+          dataObject.username,
+          hash,
+          (err, result) => {
+            const user = result.rows[0];
+            if (user) {
+              const jwtToken = jwt.sign(user, "secret");
+              res.writeHead(301, {
+                location: "/",
+                "Set-Cookie": "token=" + jwtToken
+              });
+              res.end();
+              console.log(jwtToken);
+            } else {
+              res.writeHead(301, { location: "/" });
+              res.end();
+            }
           }
-        }
-      );
+        );  
+      });
+
     });
   },
 

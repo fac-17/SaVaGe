@@ -8,7 +8,18 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
 /*----------------------------Overall styling-------------------------*/
+
+header {
+  background: black;
+  color: white;
+  padding: 1%;
+}
+
+main {
+  padding: 0 10%;
+}
 
 h1 {
   font-size: 4em;
@@ -51,140 +62,9 @@ select {
   border-radius: 3px;
   cursor: pointer;
 }
-/*----------------------------LAYOUT/GRID-------------------------*/
-body {
-  padding: 0 10%;
-  display: grid;
-  grid-template-areas:
-    "login login"
-    "headline headline"
-    "svgCreation shapeCreation"
-    "artworkCreation artworkCreation"
-    "gallery gallery";
-}
-
-h1 {
-  grid-area: headline;
-}
-
-.svg {
-  grid-area: svgCreation;
-  display: flex;
-  flex-direction: column;
-  padding-right: 2%;
-}
-
-.login {
-  grid-area: login;
-}
-
-.shape {
-  grid-area: shapeCreation;
-  display: flex;
-  flex-direction: column;
-  padding-left: 2%;
-}
-
-.artwork-creation {
-  grid-area: artworkCreation;
-}
-
-.svgs-gallery {
-  grid-area: gallery;
-}
 
 .SVGbutton,
 .SHAPEbutton {
   align-self: flex-end;
   margin: 2% 0;
-}
-/*----------------------------Create svg/shape section -------------------------*/
-label {
-  margin: 2% 0 0 0;
-}
-
-/*----------------------------Create artwork section -------------------------*/
-
-.artwork-creation {
-  background-color: wheat;
-  padding: 3%;
-  margin: 2% 0;
-  border-radius: 2px;
-}
-.interface-add-shape-to-svg {
-  display: flex;
-  margin-top: 2%;
-  align-items: center;
-}
-.list-of-shapes,
-.list-of-svgs {
-  flex-grow: 1;
-  margin: 0 2% 0 1%;
-}
-
-/*----------------------------gallery section -------------------------*/
-
-svg {
-  width: 200px;
-  padding: 1rem;
-  border: 1px solid black;
-}
-
-pre {
-  max-width: 200px;
-  white-space: pre-line;
-}
-.svg-wrapper {
-  margin: 1rem;
-}
-.svgs-gallery {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/*----------------------------mobile view -------------------------*/
-
-@media screen and (max-width: 768px) {
-  body {
-    padding: 0 2%;
-    display: grid;
-    grid-template-areas:
-      "headline"
-      "svgCreation"
-      "shapeCreation"
-      "artworkCreation"
-      "gallery";
-  }
-
-  h1 {
-    grid-area: headline;
-  }
-
-  .svg {
-    grid-area: svgCreation;
-    display: flex;
-    flex-direction: column;
-    padding-right: 2%;
-  }
-
-  .shape {
-    grid-area: shapeCreation;
-    display: flex;
-    flex-direction: column;
-    padding-left: 2%;
-  }
-
-  .artwork-creation {
-    grid-area: artworkCreation;
-  }
-
-  .svgs-gallery {
-    grid-area: gallery;
-  }
-
-  .SVGbutton,
-  .SHAPEbutton {
-    align-self: flex-end;
-    margin: 2% 0;
-  }
 }

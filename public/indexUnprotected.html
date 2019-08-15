@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/public/style.css" />
+    <link rel="stylesheet" href="/public/styleUnprotected.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap"
       rel="stylesheet"
@@ -22,18 +23,20 @@
     />
   </head>
   <body>
-    <section class="login">
-      <form action="/login" method="POST">
-        <label for="Username">Username:</label>
-        <input class="username" id="username" name="username" />
-        <label for="Password">Password:</label>
-        <input class="password" type="password" id="password" name="password" />
-        <button class="loginSubmit">Login</button>
-      </form>
-    </section>
-
-    <h1>SaVaGe<br />ARTWORK<br />CREATOR</h1>
-    <section class="svgs-gallery"></section>
-    <script src="/public/index.js" async defer></script>
+    <header>
+        <form action="/login" method="POST" class="loginForm">
+          <label for="Username">Username:</label>
+          <input class="username" id="username" name="username" required />
+          <label for="Password">Password:</label>
+          <input class="password" type="password" id="password" name="password" required/>
+          <button class="loginSubmit">Login</button>
+        </form>
+    </header>
+    <main>
+        <h1>SaVaGe<br />ARTWORK<br />CREATOR</h1>
+        <section class="svgs-gallery"></section>
+        <script src="/public/index.js" async defer></script>
+      </section>
+    </main>
   </body>
 </html>

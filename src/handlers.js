@@ -76,7 +76,6 @@ module.exports = {
         (error, result) => {
           res.writeHead(200, { "content-type": "text/html" });
           if (error) {
-            console.log(error);
             res.end(JSON.stringify({error}));
           } else {
             res.end("{}");
@@ -111,9 +110,12 @@ module.exports = {
         data2Obj.props,
         data2Obj.type,
         (error, result) => {
-          if (error) console.log(error);
           res.writeHead(200, { "content-type": "text/html" });
-          res.end("{}");
+          if (error) {
+           res.end(JSON.stringify({error}));
+          } else {
+            res.end("{}");
+          }
         }
       );
     });

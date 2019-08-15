@@ -21,9 +21,8 @@ if (SVGbutton){
     const props = "{" + SVGprops.value + "}";
     const SVGobject = { name, props };
     backendCall("/postSVG", "POST", JSON.stringify(SVGobject), res => {
-      console.log(res);
       if (res.error){
-        alert("SVG name has to be a unique name");
+        alert("SVG name has to be a unique.");
       }
       draw();
       SVGname.value = "";
@@ -45,6 +44,9 @@ if (SHAPEbutton){
     const props = "{" + SHAPEprops.value + "}";
     const SHAPEobj = { name, props, type };
     backendCall("/postSHAPE", "POST", JSON.stringify(SHAPEobj), res => {
+      if (res.error){
+        alert("Shape name has to be a unique.");
+      }
       draw();
       SHAPEname.value = "";
     });

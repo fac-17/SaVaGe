@@ -36,6 +36,8 @@ const router = (req, res) => {
       handlers.staticAssets(req, res);
     } else if (req.url === "/login") {
       handlers.login(req, res);
+    }else if (req.url === "/getAllData") {
+      handlers.getAllData(req, res);
     }
   }
 };

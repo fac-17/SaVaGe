@@ -14,32 +14,39 @@ const SVGbutton = document.querySelector(".SVGbutton");
 const SVGname = document.querySelector(".SVGname");
 const SVGprops = document.querySelector(".SVGprops");
 
-SVGbutton.addEventListener("click", () => {
-  const name = SVGname.value;
-  const props = "{" + SVGprops.value + "}";
-  const SVGobject = { name, props };
-  backendCall("/postSVG", "POST", JSON.stringify(SVGobject), res => {
-    draw();
-    SVGname.value = "";
-    SVGprops.value = "";
-  });
-});
+if (SVGbutton){
 
+  SVGbutton.addEventListener("click", () => {
+    const name = SVGname.value;
+    const props = "{" + SVGprops.value + "}";
+    const SVGobject = { name, props };
+    backendCall("/postSVG", "POST", JSON.stringify(SVGobject), res => {
+      draw();
+      SVGname.value = "";
+      SVGprops.value = "";
+    });
+  });
+  
+}
 const SHAPEbutton = document.querySelector(".SHAPEbutton");
 const SHAPEname = document.querySelector(".SHAPEname");
 const SHAPEprops = document.querySelector(".SHAPEprops");
 const SHAPEtype = document.querySelector(".SHAPEtype");
 
-SHAPEbutton.addEventListener("click", () => {
-  const name = SHAPEname.value;
-  const type = SHAPEtype.value;
-  const props = "{" + SHAPEprops.value + "}";
-  const SHAPEobj = { name, props, type };
-  backendCall("/postSHAPE", "POST", JSON.stringify(SHAPEobj), res => {
-    draw();
-    SHAPEname.value = "";
+if (SHAPEbutton){
+
+  SHAPEbutton.addEventListener("click", () => {
+    const name = SHAPEname.value;
+    const type = SHAPEtype.value;
+    const props = "{" + SHAPEprops.value + "}";
+    const SHAPEobj = { name, props, type };
+    backendCall("/postSHAPE", "POST", JSON.stringify(SHAPEobj), res => {
+      draw();
+      SHAPEname.value = "";
+    });
   });
-});
+
+ 
 
 document.querySelector(".btn-combine").addEventListener("click", () => {
   const svg_id = document.querySelector(".list-of-svgs").value;
@@ -50,7 +57,7 @@ document.querySelector(".btn-combine").addEventListener("click", () => {
     draw();
   });
 });
-
+}
 const generateSVG = (tag, props) => {
   const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
   Object.entries(props).forEach(([key, value]) => {
@@ -140,14 +147,19 @@ const populateDefaultValue = () => {
   document.querySelector(".SHAPEprops").value = defaultValues[type];
 };
 
-document
-  .querySelector(".SHAPEtype")
-  .addEventListener("change", populateDefaultValue);
+const SHAPEt=document
+  .querySelector(".SHAPEtype");
+  if (SHAPEt){
 
+    SHAPEt.addEventListener("change", populateDefaultValue);
+  }
+    
 const draw = () => {
-  populateDropdown("/getSVGs", ".list-of-svgs");
-  populateDropdown("/getSHAPEs", ".list-of-shapes");
-  populateDefaultValue();
+  if (SHAPEbutton){
+    populateDropdown("/getSVGs", ".list-of-svgs");
+    populateDropdown("/getSHAPEs", ".list-of-shapes");
+    populateDefaultValue();
+  }
   drawSVGS();
 };
 

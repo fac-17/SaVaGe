@@ -23,15 +23,17 @@ CREATE TABLE shape (
     name VARCHAR(40) NOT NULL,
     props VARCHAR(200) NOT NULL
 );
-
+-- click add to artwork
 CREATE TABLE svg_shape (
     id SERIAL PRIMARY KEY,
     svg_id INTEGER NOT NULL,
     shape_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
     FOREIGN KEY (svg_id) REFERENCES svg(id),
-    FOREIGN KEY (shape_id) REFERENCES shape(id)
+    FOREIGN KEY (shape_id) REFERENCES shape(id),
+    FOREIGN KEY (user_id) REFERENCES login_details(id)
 );
-
+-- //login table 
 INSERT INTO login_details(username, password) VALUES
   ('Leonie', 'bump'),
   ('Jan', 'poo666'),
@@ -50,9 +52,12 @@ INSERT INTO shape(name,type,props) VALUES
 ('hex','polygon','{"points":"36 4 52 20 52 36 36 70 20 36"}'),
 ('ring','circle','{"cx":50,"cy":70,"r":30}');
 
-INSERT INTO svg_shape(svg_id,shape_id) VALUES
-(1,3),(1,5),
-(2,5),(2,3),(2,1),
-(3,4);
+INSERT INTO svg_shape(svg_id,shape_id,user_id) VALUES
+(1,3,1),
+(1,5,1),
+(2,5,1),
+(2,3,1),
+(2,1,1),
+(3,4,1);
 
 COMMIT;

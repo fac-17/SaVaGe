@@ -21,6 +21,10 @@ if (SVGbutton){
     const props = "{" + SVGprops.value + "}";
     const SVGobject = { name, props };
     backendCall("/postSVG", "POST", JSON.stringify(SVGobject), res => {
+      console.log(res);
+      if (res.error){
+        alert("SVG name has to be a unique name");
+      }
       draw();
       SVGname.value = "";
       SVGprops.value = "";

@@ -74,9 +74,13 @@ module.exports = {
         dataObject.props,
         id,
         (error, result) => {
-          if (error) console.log(error);
           res.writeHead(200, { "content-type": "text/html" });
-          res.end("{}");
+          if (error) {
+            console.log(error);
+            res.end(JSON.stringify({error}));
+          } else {
+            res.end("{}");
+          }
         }
       );
     });

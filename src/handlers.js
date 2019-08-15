@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const queries = require("./queries");
 const querystring = require("querystring");
+const jwt = require("jwt");
 
 module.exports = {
   staticAssets(req, res) {
@@ -32,9 +33,13 @@ module.exports = {
     req.on("end", () => {
       let dataObject = querystring.parse(data);
       queries.getUserQuery(dataObject.username, dataObject.password, (err, res)=> {
-        if (res.rows)
+        if (res.rows) {
+          const user = res.rows[0];
+          const jwtToken = jwt.sign(user, "secret");
+          console.log(jwtToken);
+        }
     
-        console.log(res.rows[0]);
+        
       }
       )
     });

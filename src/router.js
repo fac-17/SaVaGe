@@ -3,13 +3,14 @@ const log = require("./loggedIn");
 
 const router = (req, res) => {
   const logged_In = log(req);
+
   if (logged_In) {
     //Protected Route
     if (req.url === "/") {
       req.url = "/public/indexProtected.html";
     }
     if (req.url.startsWith("/public")) {
-      handlers.staticAssets(req, res);
+      handlers.staticAssets(req, res, logged_In.username);
     } else if (req.url === "/postSVG") {
       handlers.postSVG(req, res);
     } else if (req.url === "/getAllData") {
@@ -36,7 +37,7 @@ const router = (req, res) => {
       handlers.staticAssets(req, res);
     } else if (req.url === "/login") {
       handlers.login(req, res);
-    }else if (req.url === "/getAllData") {
+    } else if (req.url === "/getAllData") {
       handlers.getAllData(req, res);
     }
   }

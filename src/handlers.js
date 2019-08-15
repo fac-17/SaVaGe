@@ -5,7 +5,7 @@ const querystring = require("querystring");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-  staticAssets(req, res) {
+  staticAssets(req, res, username) {
     const extension = path.extname(req.url).substring(1);
     const extensionType = {
       html: "text/html",
@@ -14,13 +14,13 @@ module.exports = {
       ico: "image/x-icon"
     };
     const filePath = path.join(__dirname, "..", req.url);
-    fs.readFile(filePath, (error, file) => {
+    fs.readFile(filePath, "utf-8", (error, file) => {
       if (error) {
         res.writeHead(500, { "content-type": "text/html" });
         res.end(error.message);
       } else {
         res.writeHead(200, { "content-type": extensionType[extension] });
-        res.end(file);
+        res.end(file.replace("{{ username }}", username));
       }
     });
   },

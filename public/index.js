@@ -10,11 +10,13 @@ const backendCall = (url, method, data, cb) => {
   xml.send(data);
 };
 
+const isLoggedIn =  document.querySelector('section.logout')? true: false;
+
 const SVGbutton = document.querySelector(".SVGbutton");
 const SVGname = document.querySelector(".SVGname");
 const SVGprops = document.querySelector(".SVGprops");
 
-if (SVGbutton){
+if (isLoggedIn){
 
   SVGbutton.addEventListener("click", () => {
     const name = SVGname.value;
@@ -36,7 +38,7 @@ const SHAPEname = document.querySelector(".SHAPEname");
 const SHAPEprops = document.querySelector(".SHAPEprops");
 const SHAPEtype = document.querySelector(".SHAPEtype");
 
-if (SHAPEbutton){
+if (isLoggedIn){
 
   SHAPEbutton.addEventListener("click", () => {
     const name = SHAPEname.value;
@@ -165,7 +167,7 @@ const SHAPEt=document
   }
     
 const draw = () => {
-  if (SHAPEbutton){
+  if (isLoggedIn){
     populateDropdown("/getSVGs", ".list-of-svgs");
     populateDropdown("/getSHAPEs", ".list-of-shapes");
     populateDefaultValue();

@@ -21,7 +21,7 @@ test("Not found route test", t => {
       .expect("content-type", /html/)
       .end((err, res) => {
         fs.readFile(
-          path.join(__dirname, "..", "/public/index.html"),
+          path.join(__dirname, "..", "/public/indexUnprotected.html"),
           "utf8",
           (err, content) => {
             t.equal(res.text, content, "Should have the same content");

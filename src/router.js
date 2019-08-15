@@ -39,6 +39,8 @@ const router = (req, res) => {
       handlers.login(req, res);
     } else if (req.url === "/getAllData") {
       handlers.getAllData(req, res);
+    }else {
+      handlers.notFound(req, res);
     }
   }
 };

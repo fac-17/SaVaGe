@@ -16,7 +16,7 @@ const router = (req, res) => {
     } else if (req.url === "/getAllData") {
       handlers.getAllData(req, res);
     } else if (req.url === "/getSVGs") {
-      handlers.getSVGs(req, res);
+      handlers.getSVGs(req, res, logged_In.id);
     } else if (req.url === "/postSHAPE") {
       handlers.postSHAPE(req, res);
     } else if (req.url === "/getSHAPEs") {

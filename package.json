@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "db_init": "node database/db_init.js",
     "test": "NODE_ENV=test tape tests/*.js | tap-spec"
   },

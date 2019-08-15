@@ -2,8 +2,8 @@ const handlers = require("./handlers");
 const log = require("./loggedIn");
 
 const router = (req, res) => {
-  const logged_In = log(req);
-
+  const logged_In = log(req,res);
+  if (logged_In instanceof Error) return;
   if (logged_In) {
     //Protected Route
     if (req.url === "/") {
@@ -39,6 +39,8 @@ const router = (req, res) => {
       handlers.login(req, res);
     } else if (req.url === "/getAllData") {
       handlers.getAllData(req, res);
+    }else {
+      handlers.notFound(req, res);
     }
   }
 };

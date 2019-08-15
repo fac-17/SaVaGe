@@ -1,0 +1,93 @@
+/*----------------------------LAYOUT/GRID-------------------------*/
+main {
+  display: grid;
+  grid-template-areas:
+    "headline headline"
+    "gallery gallery";
+}
+
+h1 {
+  grid-area: headline;
+}
+
+.svgs-gallery {
+  grid-area: gallery;
+}
+
+/*----------------------------LOGIN SECTION -------------------------*/
+
+header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: space-around;
+}
+
+.loginForm > * {
+  margin: 0 1%;
+  align-self: center;
+}
+
+.loginSubmit {
+  padding: 5px;
+  width: 300px;
+  flex-basis: 300px;
+}
+
+.loginSubmit:hover {
+  border-color: white;
+}
+
+/*----------------------------gallery section -------------------------*/
+
+svg {
+  width: 200px;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+pre {
+  max-width: 200px;
+  white-space: pre-line;
+}
+.svg-wrapper {
+  margin: 1rem;
+}
+.svgs-gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*----------------------------mobile view -------------------------*/
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0 2%;
+    display: grid;
+    grid-template-areas:
+      "headline"
+      "gallery";
+  }
+
+  h1 {
+    grid-area: headline;
+  }
+
+  .svgs-gallery {
+    grid-area: gallery;
+  }
+
+  .SVGbutton,
+  .SHAPEbutton {
+    align-self: flex-end;
+    margin: 2% 0;
+  }
+
+  .loginSubmit {
+    width: 10px;
+    padding: 5px;
+  }
+}

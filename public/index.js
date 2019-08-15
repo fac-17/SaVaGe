@@ -10,8 +10,7 @@ const backendCall = (url, method, data, cb) => {
   xml.send(data);
 };
 
-const isLoggedIn =  document.querySelector('section.logout')? true: false;
-
+const isLoggedIn =  document.querySelector('.logoutSubmit')? true: false;
 const SVGbutton = document.querySelector(".SVGbutton");
 const SVGname = document.querySelector(".SVGname");
 const SVGprops = document.querySelector(".SVGprops");

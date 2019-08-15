@@ -38,7 +38,7 @@ module.exports = {
         (err, result) => {
           const user = result.rows[0];
           if (user) {
-            const jwtToken = jwt.sign(user, "secret");
+            const jwtToken = jwt.sign(user, process.env.SECRET);
             res.writeHead(301, {
               location: "/",
               "Set-Cookie": "token=" + jwtToken
@@ -74,9 +74,12 @@ module.exports = {
         dataObject.props,
         id,
         (error, result) => {
-          if (error) console.log(error);
           res.writeHead(200, { "content-type": "text/html" });
-          res.end("{}");
+          if (error) {
+            res.end(JSON.stringify({error}));
+          } else {
+            res.end("{}");
+          }
         }
       );
     });
@@ -107,9 +110,12 @@ module.exports = {
         data2Obj.props,
         data2Obj.type,
         (error, result) => {
-          if (error) console.log(error);
           res.writeHead(200, { "content-type": "text/html" });
-          res.end("{}");
+          if (error) {
+           res.end(JSON.stringify({error}));
+          } else {
+            res.end("{}");
+          }
         }
       );
     });

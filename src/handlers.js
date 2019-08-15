@@ -62,7 +62,7 @@ module.exports = {
     res.end();
   },
 
-  postSVG(req, res) {
+  postSVG(req, res, id) {
     let data = "";
     req.on("data", chunk => {
       data += chunk;
@@ -72,6 +72,7 @@ module.exports = {
       queries.postSVGquery(
         dataObject.name,
         dataObject.props,
+        id,
         (error, result) => {
           if (error) console.log(error);
           res.writeHead(200, { "content-type": "text/html" });
@@ -121,7 +122,7 @@ module.exports = {
     });
   },
 
-  insertSVG_SHAPE(req, res, id) {
+  insertSVG_SHAPE(req, res) {
     let data3 = "";
     req.on("data", chunk => {
       data3 += chunk;
@@ -131,7 +132,6 @@ module.exports = {
       queries.insertSVG_SHAPEquery(
         obj.svg_id,
         obj.shape_id,
-        id,
         (error, result) => {
           if (error) return error;
           res.writeHead(200, { "content-type": "text/html" });

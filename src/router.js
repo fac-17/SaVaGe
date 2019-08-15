@@ -12,7 +12,7 @@ const router = (req, res) => {
     if (req.url.startsWith("/public")) {
       handlers.staticAssets(req, res, logged_In.username);
     } else if (req.url === "/postSVG") {
-      handlers.postSVG(req, res);
+      handlers.postSVG(req, res, logged_In.id);
     } else if (req.url === "/getAllData") {
       handlers.getAllData(req, res);
     } else if (req.url === "/getSVGs") {
@@ -22,7 +22,7 @@ const router = (req, res) => {
     } else if (req.url === "/getSHAPEs") {
       handlers.getSHAPEs(req, res);
     } else if (req.url === "/insertSVG_SHAPE") {
-      handlers.insertSVG_SHAPE(req, res, logged_In.id);
+      handlers.insertSVG_SHAPE(req, res);
     } else if (req.url === "/logout") {
       handlers.logout(req, res);
     } else {

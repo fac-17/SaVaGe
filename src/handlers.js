@@ -35,11 +35,9 @@ module.exports = {
     });
     req.on("end", () => {
       let dataObject = querystring.parse(data);
-      bcrypt.hash(dataObject.password, process.env.SALT, function(err, hash) {
-        console.log('password hash = ', hash)
         queries.getUserQuery(
           dataObject.username,
-          hash,
+          dataObject.password,
           (err, user) => {
             if (user) {
               const jwtToken = jwt.sign(user, secret);
@@ -54,8 +52,7 @@ module.exports = {
               res.end();
             }
           }
-        );  
-      });
+        );
 
     });
   },

@@ -33,8 +33,6 @@ header {
 
 .loginSubmit {
   padding: 5px;
-  width: 300px;
-  flex-basis: 300px;
 }
 
 .loginSubmit:hover {
@@ -64,16 +62,51 @@ pre {
 /*----------------------------mobile view -------------------------*/
 
 @media screen and (max-width: 768px) {
+  header {
+    display: block;
+    padding: 0;
+    height: 22vh;
+    padding-top: 1vh;
+  }
+
   main {
-    padding: 0 2%;
     display: grid;
     grid-template-areas:
       "headline"
       "gallery";
   }
+  /*----------------------------Login area -------------------------*/
+
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .loginForm > * {
+    margin: 0 1%;
+    align-self: center;
+  }
+
+  .username,
+  .password,
+  .loginSubmit {
+    margin: 0.5% 0;
+    width: 80% !important;
+    align-self: center;
+  }
+
+  .loginSubmit {
+    padding: 2px;
+  }
+
+  .loginSubmit:hover {
+    border-color: white;
+  }
+  /*----------------------------gallery -------------------------*/
 
   h1 {
     grid-area: headline;
+    font-size: ;
   }
 
   .svgs-gallery {

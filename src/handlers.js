@@ -32,8 +32,9 @@ module.exports = {
     });
     req.on("end", () => {
       let dataObject = querystring.parse(data);
+      let username = dataObject.username.toUpperCase();
       queries.getUserQuery(
-        dataObject.username,
+        username,
         dataObject.password,
         (err, result) => {
           const user = result.rows[0];

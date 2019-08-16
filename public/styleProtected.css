@@ -119,8 +119,16 @@ pre {
 /*----------------------------mobile view -------------------------*/
 
 @media screen and (max-width: 768px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    height: 12vh;
+    padding-top: 1vh;
+  }
+
   main {
-    padding: 0 2%;
+    padding: 0 10%;
     display: grid;
     grid-template-areas:
       "headline"
@@ -128,6 +136,22 @@ pre {
       "shapeCreation"
       "artworkCreation"
       "gallery";
+  }
+
+  /*----------------------------Logout section-------------------------*/
+
+  header > * {
+    align-self: center;
+    width: 80%;
+  }
+
+  header p {
+    padding-bottom: 4%;
+  }
+
+  .logoutSubmit {
+    padding: 5px;
+    width: 100%;
   }
 
   h1 {
@@ -156,9 +180,14 @@ pre {
     grid-area: gallery;
   }
 
-  .SVGbutton,
-  .SHAPEbutton {
-    align-self: flex-end;
-    margin: 2% 0;
+  .interface-add-shape-to-svg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .interface-add-shape-to-svg > * {
+    width: 100%;
+    margin: 0.4% 0;
   }
 }

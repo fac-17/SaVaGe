@@ -16,11 +16,14 @@ npm start
 ```
 
 Create a .env file in the root directory and ask our team to provide you with the content for this file. 
+### Setup SECRET
+in your .env add SECRET variable
 
+SECRET=any-word
 ### Configure db
 In the root directory you need the `.env` file with PosgreSQL connection URL in a form
 ```
-DATABASE_URL=postgres://very:secret@data
+DATABASE_URL=postgres://url_to_any_database_you_have_access
 ````
 
 then run db build script to create and populate the tables
@@ -36,6 +39,7 @@ Then to run all tests (including db and server):
 ```
 npm test
 ```
+### Example username: 'Francesca' password:'ciao'
 
 ### Product
 
@@ -75,16 +79,18 @@ All artwork (created by any user) is visible in the gallery. The gallery is alwa
 ## Schema 
 ![](https://i.imgur.com/vQgf3pH.jpg)
 
-### details_login 
+
+### login_details 
 | column | definition |
-| -------- | -------- | 
+|--------|--------| 
 | id   | SERIAL PRIMARY KEY     | 
-| username  | VARCHAR(200) NOT NULL     | 
+| username   | VARCHAR(200) NOT NULL     | 
 | password   |   VARCHAR(40) NOT NULL  | 
+
 
 ### svg 
 | column | definition |
-| -------- | -------- | 
+|--------|--------| 
 | id   | SERIAL PRIMARY KEY     | 
 | props   | VARCHAR(200) NOT NULL     | 
 | name   |   VARCHAR(40) NOT NULL  | 

@@ -35,12 +35,11 @@ CREATE TABLE svg_shape (
 );
 -- //login table 
 INSERT INTO login_details(username, password) VALUES
-  ('Leonie', '$2b$10$v.gO.1AOPD05n.N0ExnQ8.jRSpCQgiBhtMnJf/ooVps6YEG7tsek6'),
-  ('Jan', '$2b$10$OoqihByGLhtU78aQxKDMfealOB11jw2oVUB7UpcHoes4fzmEIGSoC'),
-  ('Francesca', '$2b$10$53jDqmY1lhO2JEiUem6pb.HJ6yc7drE8U7mR1KKYT8Cq/qKUz3fD.'),
-  ('Colette', '$2b$10$vtHFXu4vWmUmS6.zd2XYg.sWrFwLD1ukmYcWDo5iSK34Ybt.5m.va'),
-  ('Sam', '$2b$10$xPOGe5VnffI1AK3.K2OVu.IYCNK0rXv3YAkjKf1oQIfiOmoapwnxe');
-
+  ('LEONIE', '$2b$10$iYJ0/hBnkJhNFWZuBTmma.Yxwugo7uTXn/cp9sxzEG4HKI4D72fcu'),
+  ('JAN', '$2b$10$iYJ0/hBnkJhNFWZuBTmma.RcgZHxWjFm.rVEm3Fz1kaKV4/Zz76HC'),
+  ('FRANCESCA', '2b$10$iYJ0/hBnkJhNFWZuBTmma..9LfCAylv8Pel9Xjx3jS3IIzmfHneBm'),
+  ('COLETTE', '$2b$10$iYJ0/hBnkJhNFWZuBTmma.rdnUme6fFMbFk/vzYaz2wv6HzrLH7dy'),
+  ('SAM', '$2b$10$iYJ0/hBnkJhNFWZuBTmma.UU02CTZN5dgtQ54ZnIFOKyolV.1ZyKO');
 
 INSERT INTO svg(name,props,user_id) VALUES
   ('picasso','{"fill":"pink"}',1),

@@ -1,8 +1,5 @@
 const cookie = require("cookie");
 const jwt = require("jsonwebtoken");
-const secret = process.env.SECRET;
-
-console.log(secret);
 
 module.exports = (req, res) => {
   const cookies = cookie.parse(req.headers.cookie || "");

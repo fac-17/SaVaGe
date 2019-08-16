@@ -3,9 +3,6 @@ const path = require("path");
 const queries = require("./queries");
 const querystring = require("querystring");
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt');
-
-const secret = process.env.SECRET;
 
 module.exports = {
   staticAssets(req, res, username) {
@@ -34,26 +31,21 @@ module.exports = {
       data += chunk;
     });
     req.on("end", () => {
-      let dataObject = querystring.parse(data);
-        queries.getUserQuery(
-          dataObject.username,
-          dataObject.password,
-          (err, user) => {
-            if (user) {
-              const jwtToken = jwt.sign(user, secret);
-              res.writeHead(301, {
-                location: "/",
-                "Set-Cookie": "token=" + jwtToken
-              });
-              res.end();
-              console.log(jwtToken);
-            } else {
-              res.writeHead(301, { location: "/" });
-              res.end();
-            }
+      let {username, password} = querystring.parse(data);
+      let formattedUsername = username.toUpperCase();
+      queries.getUserQuery( formattedUsername, password, (err, userDetails) => {
+          if(err) {
+            res.writeHead(301, { location: "/" });
+            res.end();
+          } else {
+            const jwtToken = jwt.sign(userDetails, process.env.SECRET);
+            res.writeHead(301, {
+              location: "/",
+              "Set-Cookie": "token=" + jwtToken
+            });
+            res.end();
           }
-        );
-
+        });
     });
   },
 

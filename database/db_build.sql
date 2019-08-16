@@ -35,11 +35,11 @@ CREATE TABLE svg_shape (
 );
 -- //login table 
 INSERT INTO login_details(username, password) VALUES
-  ('Leonie', 'bump'),
-  ('Jan', 'poo666'),
-  ('Francesca', 'ciao'),
-  ('Colette', 'butts'),
-  ('Sam', 'jam');
+  ('LEONIE', 'bump'),
+  ('JAN', 'poo666'),
+  ('FRANCESCA', 'ciao'),
+  ('COLETTE', 'butts'),
+  ('SAM', 'jam');
 
 INSERT INTO svg(name,props,user_id) VALUES
   ('picasso','{"fill":"pink"}',1),

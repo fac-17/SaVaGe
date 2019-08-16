@@ -31,27 +31,21 @@ module.exports = {
       data += chunk;
     });
     req.on("end", () => {
-      let dataObject = querystring.parse(data);
-      let username = dataObject.username.toUpperCase();
-      queries.getUserQuery(
-        username,
-        dataObject.password,
-        (err, result) => {
-          const user = result.rows[0];
-          if (user) {
-            const jwtToken = jwt.sign(user, process.env.SECRET);
+      let {username, password} = querystring.parse(data);
+      let formattedUsername = username.toUpperCase();
+      queries.getUserQuery( formattedUsername, password, (err, userDetails) => {
+          if(err) {
+            res.writeHead(301, { location: "/" });
+            res.end();
+          } else {
+            const jwtToken = jwt.sign(userDetails, process.env.SECRET);
             res.writeHead(301, {
               location: "/",
               "Set-Cookie": "token=" + jwtToken
             });
             res.end();
-            console.log(jwtToken);
-          } else {
-            res.writeHead(301, { location: "/" });
-            res.end();
           }
-        }
-      );
+        });
     });
   },
 

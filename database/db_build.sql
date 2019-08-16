@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS svg_shape CASCADE;
 CREATE TABLE login_details (
   id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
-  password VARCHAR(50) NOT NULL
+  password VARCHAR(250) NOT NULL
 );
 
 CREATE TABLE svg (
@@ -35,11 +35,11 @@ CREATE TABLE svg_shape (
 );
 -- //login table 
 INSERT INTO login_details(username, password) VALUES
-  ('LEONIE', 'bump'),
-  ('JAN', 'poo666'),
-  ('FRANCESCA', 'ciao'),
-  ('COLETTE', 'butts'),
-  ('SAM', 'jam');
+  ('LEONIE', '$2b$10$iYJ0/hBnkJhNFWZuBTmma.Yxwugo7uTXn/cp9sxzEG4HKI4D72fcu'),
+  ('JAN', '$2b$10$iYJ0/hBnkJhNFWZuBTmma.RcgZHxWjFm.rVEm3Fz1kaKV4/Zz76HC'),
+  ('FRANCESCA', '2b$10$iYJ0/hBnkJhNFWZuBTmma..9LfCAylv8Pel9Xjx3jS3IIzmfHneBm'),
+  ('COLETTE', '$2b$10$iYJ0/hBnkJhNFWZuBTmma.rdnUme6fFMbFk/vzYaz2wv6HzrLH7dy'),
+  ('SAM', '$2b$10$iYJ0/hBnkJhNFWZuBTmma.UU02CTZN5dgtQ54ZnIFOKyolV.1ZyKO');
 
 INSERT INTO svg(name,props,user_id) VALUES
   ('picasso','{"fill":"pink"}',1),

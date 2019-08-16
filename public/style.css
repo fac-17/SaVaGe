@@ -64,6 +64,9 @@ select {
   border-radius: 3px;
   cursor: pointer;
 }
+input { 
+  cursor:text;
+}
 
 .SVGbutton,
 .SHAPEbutton {

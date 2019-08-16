@@ -73,3 +73,39 @@ input {
   align-self: flex-end;
   margin: 2% 0;
 }
+
+@media screen and (max-width: 768px) {
+  *,
+  *:before,
+  *:after {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  main {
+    padding: 0 8%;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  section {
+    margin: 5% 0;
+  }
+  button {
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .svgs-gallery {
+    display: flex;
+    justify-content: center;
+  }
+
+  .svg-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -24,10 +24,10 @@
   </head>
   <body>
     <header>
-        <form action="/login" method="POST" class="loginForm">
-          <label for="Username">Username:</label>
-          <input class="username" id="username" name="username" required />
-          <label for="Password">Password:</label>
+        <form action="/login" method="POST" class="loginForm" aria-label="Log-in">
+          <label for="username">Username:</label>
+          <input class="username" type="text" id="username" name="username" required/>
+          <label for="password">Password:</label>
           <input class="password" type="password" id="password" name="password" required/>
           <button class="loginSubmit">Login</button>
         </form>
